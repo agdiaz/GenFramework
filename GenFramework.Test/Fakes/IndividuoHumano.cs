@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace GenFramework.Test.Fakes
 {
-    public class IndividuoHumano : Individuo
+    public class IndividuoHumano : IndividuoBase
     {
         public IndividuoHumano()
             :base(64)

@@ -9,19 +9,20 @@ using System.Threading.Tasks;
 
 namespace GenFramework.Implementacion.Poblacion
 {
-    public class Individuo : IIndividuo
+    public class IndividuoBase : IIndividuo
     {
         public ICromosoma Cromosoma { get; set; }
         public Type Genotipo { get; set; }
-        public Individuo(int cantidadGenes)
+
+        public IndividuoBase(int cantidadGenes)
         {
             this.Cromosoma = new Cromosoma(cantidadGenes);
-            this.Genotipo = typeof(Individuo);
+            this.Genotipo = typeof(IndividuoBase);
         }
 
         public IIndividuo GenerarDescendencia(IIndividuo individuo)
         {
-            var descendiente = new Individuo(individuo.Cromosoma.CantidadGenes);
+            var descendiente = new IndividuoBase(individuo.Cromosoma.CantidadGenes);
             descendiente.Genotipo = individuo.Genotipo;
 
             return descendiente;

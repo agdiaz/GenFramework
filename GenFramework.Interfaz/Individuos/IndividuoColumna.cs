@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace GenFramework.Interfaz.Individuos
 {
-    public class IndividuoColumna : Individuo
+    public class IndividuoColumna : IndividuoBase
     {
         public IndividuoColumna()
             :this(0, 0, 1)

@@ -57,7 +57,7 @@
     <Compile Include="Interfaces\Parametros\IParametrosCorte.cs" />
     <Compile Include="Interfaces\Parametros\IParametrosCruzamiento.cs" />
     <Compile Include="Implementacion\Poblacion\Poblacion.cs" />
-    <Compile Include="Implementacion\Poblacion\Individuo.cs" />
+    <Compile Include="Implementacion\Poblacion\IndividuoBase.cs" />
     <Compile Include="Interfaces\Genetica\ICromosoma.cs" />
     <Compile Include="Interfaces\Genetica\IGen.cs" />
     <Compile Include="Interfaces\IAlgoritmoGenetico.cs" />
