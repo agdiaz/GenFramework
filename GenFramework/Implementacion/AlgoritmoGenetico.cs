@@ -1,4 +1,5 @@
-﻿using GenFramework.Interfaces;
+﻿using GenFramework.Eventos;
+using GenFramework.Interfaces;
 using GenFramework.Interfaces.OperadorAnalisisPoblacion;
 using GenFramework.Interfaces.OperadorCorte;
 using GenFramework.Interfaces.OperadorCruzamiento;
@@ -17,13 +18,18 @@ namespace GenFramework.Implementacion
 {
     public class AlgoritmoGenetico : IAlgoritmoGenetico
     {
+        public event IteracionTerminadaEventHandler IteracionTerminada;
+
+        #region Atributos
         private IOperadorSeleccion _operadorSeleccion;
         private IOperadorCruzamiento _operadorCruzamiento;
         private IOperadorMutacion _operadorMutacion;
         private IOperadorCorte _operadorCorte;
         private IOperadorAnalisisPoblacion _operadorAnalisisPoblacion;
         private IPoblacion _poblacion;
+        #endregion
 
+        #region Constructor
         public AlgoritmoGenetico(IPoblacion poblacionInicial,
             IOperadorSeleccion _operadorSeleccion, 
             IOperadorCruzamiento _operadorCruzamiento, 
@@ -38,6 +44,7 @@ namespace GenFramework.Implementacion
             this._operadorCorte = _operadorCorte;
             this._operadorAnalisisPoblacion = operadorAnalisisPoblacion;
         }
+        #endregion
 
         #region IAlgoritmoGenetico
         public IPoblacion Ejecutar(IParametros parametros)
@@ -52,7 +59,9 @@ namespace GenFramework.Implementacion
                 this._poblacion = this._operadorMutacion.Mutar(this._poblacion);
 
                 // Esperar para la siguiente vuelta
-                this._operadorAnalisisPoblacion.Analizar(this._poblacion);
+                //this._operadorAnalisisPoblacion.Analizar(this._poblacion);
+                IteracionTerminada(this, new PoblacionEventArgs(_poblacion));
+
                 Thread.Sleep(parametros.IntervaloPorVuelta);
 
             } while (!this._operadorCorte.CortarEjecucion(this._poblacion));

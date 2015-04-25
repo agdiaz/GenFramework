@@ -11,10 +11,9 @@ namespace GenFramework.Interfaz.FuncionFitness
 {
     public class FuncionSalto : IFuncionFitness
     {
-        public int Evaluar(IIndividuo individuo1)
+        public int Evaluar(IIndividuo columna)
         {
-            var columna = individuo1 as IndividuoColumna;
-            if (columna == null)
+            if (columna.Genotipo != typeof(IndividuoColumna))
             {
                 return 0;
             }

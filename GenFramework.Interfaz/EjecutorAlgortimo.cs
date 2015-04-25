@@ -1,4 +1,5 @@
-﻿using GenFramework.Implementacion;
+﻿using GenFramework.Eventos;
+using GenFramework.Implementacion;
 using GenFramework.Implementacion.OperadorAnalisisPoblacion;
 using GenFramework.Implementacion.OperadorCorte;
 using GenFramework.Implementacion.OperadorCruzamiento;
@@ -7,6 +8,7 @@ using GenFramework.Implementacion.OperadorSeleccion;
 using GenFramework.Implementacion.Parametros;
 using GenFramework.Implementacion.Poblacion;
 using GenFramework.Interfaces;
+using GenFramework.Interfaces.OperadorAnalisisPoblacion;
 using GenFramework.Interfaces.Parametros;
 using GenFramework.Interfaz.Individuos;
 using System;
@@ -24,6 +26,7 @@ namespace GenFramework.Interfaz
     public partial class EjecutorAlgortimo : Form
     {
         private int _intervaloTimer;
+        private IOperadorAnalisisPoblacion analisis;
 
         #region Constructor
         public EjecutorAlgortimo()
@@ -47,20 +50,28 @@ namespace GenFramework.Interfaz
             poblacionInicial.PoblacionActual.Add(columna1);
 
             var funcionFitness = new FuncionFitness.FuncionSalto();
+            analisis = new OperadorAnalisisPoblacion(new ParametrosAnalisisPoblacion() { Funcion = funcionFitness });
 
             IAlgoritmoGenetico algoritmo = new AlgoritmoGenetico(poblacionInicial,
                 new OperadorSeleccionPorTorneo(new ParametrosSeleccion() { CantidadIndividuosASeleccionar = 2, FuncionFitness = funcionFitness }),
                 new OperadorCruzamientoSimple(new ParametrosCruzamiento() { IndiceCorte = 2 }),
                 new OperadorMutacionConstante(),
                 new OperadorCorteSimple(new ParametrosCorte() { FuncionFitness = funcionFitness, UmbralCorte = 3, LimiteIteraciones = (int)nudLimiteVueltas.Value }),
-                new OperadorAnalisisPoblacion(new ParametrosAnalisisPoblacion(){ Funcion = funcionFitness}));
+                analisis);
 
             IParametros parametros = new Parametros()
             {
                 IntervaloPorVuelta = _intervaloTimer,
             };
 
+            algoritmo.IteracionTerminada += algoritmo_IteracionTerminada;
             algoritmo.Ejecutar(parametros);
+        }
+
+        void algoritmo_IteracionTerminada(object sender, PoblacionEventArgs e)
+        {
+            analisis.Analizar(e.PoblacionResultante);
+            this.txtGlobalMejorIndividuo.Text = analisis.ObtenerMejorGlobal.ToString();
         }
        
 

@@ -39,6 +39,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Eventos\PoblacionEventArgs.cs" />
     <Compile Include="Implementacion\AlgoritmoGenetico.cs" />
     <Compile Include="Implementacion\Genetica\Cromosoma.cs" />
     <Compile Include="Implementacion\OperadorAnalisisPoblacion\OperadorAnalisisPoblacion.cs" />
