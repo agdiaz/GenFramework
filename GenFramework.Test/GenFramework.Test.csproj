@@ -53,10 +53,13 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="Fakes\IndividuoAnimal.cs" />
+    <Compile Include="Fakes\IndividuoHumano.cs" />
     <Compile Include="Interfaces\AlgoritmoGeneticoTest.cs" />
     <Compile Include="Interfaces\OperadorSeleccionTest.cs" />
     <Compile Include="Interfaces\OperadorCruzamientoTest.cs" />
     <Compile Include="Interfaces\IndividuoTest.cs" />
+    <Compile Include="Interfaces\ParametrosTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

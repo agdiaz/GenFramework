@@ -26,6 +26,10 @@ namespace GenFramework.Test.Interfaces
         private IIndividuo _individuo4;
 
         private IParametrosCruzamiento _parametrosCruzamientoSimple;
+        private IIndividuo _individuo1h;
+        private IIndividuo _individuo2h;
+        private IIndividuo _individuo3h;
+        private IIndividuo _individuo4h;
 
         [TestInitialize]
         public void TestInitialize()
@@ -45,8 +49,12 @@ namespace GenFramework.Test.Interfaces
             genes1.SetValue(genBasico1A, 0);
             genes1.SetValue(genBasico1A, 1);
             genes1.SetValue(genBasico1A, 2);
+            
+            this._individuo1h = MockRepository.GenerateMock<IIndividuo>();
+            this._individuo1h.Expect(e => e.Cromosoma).Return(new Cromosoma(Array.CreateInstance(typeof(IGen), 3))).Repeat.Any();
             this._individuo1 = MockRepository.GenerateMock<IIndividuo>();
             this._individuo1.Expect(e => e.Cromosoma).Return(new Cromosoma(genes1)).Repeat.Any();
+            this._individuo1.Expect(e => e.GenerarDescendencia(_individuo1)).Return(_individuo1h);
 
             var genes2 = Array.CreateInstance(typeof(IGen), 3);
             var genBasico2A = MockRepository.GenerateMock<IGen>();
@@ -55,8 +63,12 @@ namespace GenFramework.Test.Interfaces
             genes2.SetValue(genBasico2A, 0);
             genes2.SetValue(genBasico2A, 1);
             genes2.SetValue(genBasico2A, 2);
+            this._individuo2h = MockRepository.GenerateMock<IIndividuo>();
+            this._individuo2h.Expect(e => e.Cromosoma).Return(new Cromosoma(Array.CreateInstance(typeof(IGen), 3))).Repeat.Any();
             this._individuo2 = MockRepository.GenerateMock<IIndividuo>();
-            this._individuo2.Expect(e => e.Cromosoma).Return(new Cromosoma(genes2)).Repeat.Any();
+            this._individuo2.Expect(e => e.Cromosoma).Return(new Cromosoma(genes2)).Repeat.Any(); 
+            this._individuo2.Expect(e => e.GenerarDescendencia(_individuo2)).Return(_individuo2h);
+
 
             var genes3 = Array.CreateInstance(typeof(IGen), 3);
             var genBasico3A = MockRepository.GenerateMock<IGen>();
@@ -65,8 +77,11 @@ namespace GenFramework.Test.Interfaces
             genes3.SetValue(genBasico3A, 0);
             genes3.SetValue(genBasico3A, 1);
             genes3.SetValue(genBasico3A, 2);
+            this._individuo3h = MockRepository.GenerateMock<IIndividuo>();
+            this._individuo3h.Expect(e => e.Cromosoma).Return(new Cromosoma(Array.CreateInstance(typeof(IGen), 3))).Repeat.Any();
             this._individuo3 = MockRepository.GenerateMock<IIndividuo>();
             this._individuo3.Expect(e => e.Cromosoma).Return(new Cromosoma(genes3)).Repeat.Any();
+            this._individuo3.Expect(e => e.GenerarDescendencia(_individuo3)).Return(_individuo3h);
 
             var genes4 = Array.CreateInstance(typeof(IGen), 3);
             var genBasico4A = MockRepository.GenerateMock<IGen>();
@@ -75,8 +90,12 @@ namespace GenFramework.Test.Interfaces
             genes4.SetValue(genBasico1A, 0);
             genes4.SetValue(genBasico1A, 1);
             genes4.SetValue(genBasico1A, 2);
+            this._individuo4h = MockRepository.GenerateMock<IIndividuo>();
+            this._individuo4h.Expect(e => e.Cromosoma).Return(new Cromosoma(Array.CreateInstance(typeof(IGen), 3))).Repeat.Any();
             this._individuo4 = MockRepository.GenerateMock<IIndividuo>();
             this._individuo4.Expect(e => e.Cromosoma).Return(new Cromosoma(genes4)).Repeat.Any();
+            this._individuo4.Expect(e => e.GenerarDescendencia(_individuo4)).Return(_individuo4h);
+
 
 
             this._individuos = new List<IIndividuo>() { this._individuo1, this._individuo2, this._individuo3, this._individuo4 };

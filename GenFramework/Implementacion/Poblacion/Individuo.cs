@@ -12,10 +12,19 @@ namespace GenFramework.Implementacion.Poblacion
     public class Individuo : IIndividuo
     {
         public ICromosoma Cromosoma { get; set; }
-
+        public Type Genotipo { get; set; }
         public Individuo(int cantidadGenes)
         {
             this.Cromosoma = new Cromosoma(cantidadGenes);
+            this.Genotipo = typeof(Individuo);
+        }
+
+        public IIndividuo GenerarDescendencia(IIndividuo individuo)
+        {
+            var descendiente = new Individuo(individuo.Cromosoma.CantidadGenes);
+            descendiente.Genotipo = individuo.Genotipo;
+
+            return descendiente;
         }
     }
 }

@@ -41,13 +41,18 @@
   <ItemGroup>
     <Compile Include="Implementacion\AlgoritmoGenetico.cs" />
     <Compile Include="Implementacion\Genetica\Cromosoma.cs" />
+    <Compile Include="Implementacion\OperadorAnalisisPoblacion\OperadorAnalisisPoblacion.cs" />
     <Compile Include="Implementacion\OperadorCorte\OperadorCorteSimple.cs" />
     <Compile Include="Implementacion\OperadorCruzamiento\OperadorCruzamientoSimple.cs" />
     <Compile Include="Implementacion\OperadorMutacion\OperadorMutacionConstante.cs" />
     <Compile Include="Implementacion\OperadorSeleccion\OperadorSeleccionPorTorneo.cs" />
+    <Compile Include="Implementacion\Parametros\Parametros.cs" />
+    <Compile Include="Implementacion\Parametros\ParametrosAnalisisPoblacion.cs" />
     <Compile Include="Implementacion\Parametros\ParametrosCorte.cs" />
     <Compile Include="Implementacion\Parametros\ParametrosCruzamiento.cs" />
     <Compile Include="Implementacion\Parametros\ParametrosSeleccion.cs" />
+    <Compile Include="Interfaces\OperadorAnalisisPoblacion\IOperadorAnalisisPoblacion.cs" />
+    <Compile Include="Interfaces\Parametros\IParametrosAnalisisPoblacion.cs" />
     <Compile Include="Interfaces\Parametros\IParametrosCorte.cs" />
     <Compile Include="Interfaces\Parametros\IParametrosCruzamiento.cs" />
     <Compile Include="Implementacion\Poblacion\Poblacion.cs" />

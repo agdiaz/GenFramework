@@ -21,7 +21,7 @@ namespace GenFramework.Implementacion.OperadorSeleccion
 
         public IPoblacion Seleccionar(IPoblacion poblacionInicial)
         {
-            var poblacionSeleccionada = new Poblacion.Poblacion(new List<IIndividuo>(poblacionInicial.PoblacionActual));
+            var poblacionSeleccionada = new Poblacion.Poblacion(poblacionInicial.NumeroGeneracion, new List<IIndividuo>(poblacionInicial.PoblacionActual));
 
             for (int cantidadIndividuos = 0; cantidadIndividuos < _parametrosSeleccionPorTorneo.CantidadIndividuosASeleccionar; cantidadIndividuos++)
             {

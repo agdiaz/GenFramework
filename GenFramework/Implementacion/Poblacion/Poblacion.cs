@@ -10,14 +10,18 @@ namespace GenFramework.Implementacion.Poblacion
 {
     public class Poblacion : IPoblacion
     {
-        public Poblacion() : this(new List<IIndividuo>()){ }
+        public IList<IIndividuo> PoblacionActual { get; private set; }
+        public int NumeroGeneracion { get; set; }
 
-        public Poblacion(IList<IIndividuo> individuos)
+        public Poblacion() : this(0, new List<IIndividuo>()) { }
+
+        public Poblacion(IList<IIndividuo> individuos) :this(0, individuos) { }
+
+        public Poblacion(int numeroGeneracion, IList<IIndividuo> individuos)
         {
+            this.NumeroGeneracion = numeroGeneracion;
             this.PoblacionActual = individuos;
         }
-
-        public IList<IIndividuo> PoblacionActual { get; private set; }
 
         public IIndividuo ObtenerIndividuo()
         {

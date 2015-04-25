@@ -8,10 +8,8 @@ using System.Threading.Tasks;
 
 namespace GenFramework.Implementacion.Parametros
 {
-    public class ParametrosCorte : IParametrosCorte 
+    public class ParametrosAnalisisPoblacion : IParametrosAnalisisPoblacion
     {
-        public IFuncionFitness FuncionFitness { get; set; }
-        public int UmbralCorte {get; set;}
-        public int LimiteIteraciones { get; set; }       
+        public IFuncionFitness Funcion { get; set; }
     }
 }

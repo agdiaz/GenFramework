@@ -27,5 +27,14 @@ namespace GenFramework.Interfaz.FuncionFitness
                 return (alto + largo) * 1 / peso;
             }
         }
+
+        private int ObtenerAlturaSalto(int peso, int alturaParado, int alturaFlexionado)
+        {
+            var fuerza = 1000;
+
+            var altura = (fuerza / peso) * ((int)(alturaParado / 0.1) - (int)(alturaFlexionado / 0.1));
+
+            return altura;
+        }
     }
 }

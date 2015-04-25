@@ -7,5 +7,6 @@ namespace GenFramework.Interfaces.Parametros
 {
     public interface IParametros
     {
+        int IntervaloPorVuelta { get; set; }
     }
 }

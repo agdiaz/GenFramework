@@ -22,7 +22,11 @@ namespace GenFramework.Implementacion.OperadorCorte
         {
             bool cortar = false;
 
-            for (int indiceIndividuo = 0; !cortar && indiceIndividuo < poblacionMutada.PoblacionActual.Count; indiceIndividuo++)
+            for (int indiceIndividuo = 0; 
+                !cortar && 
+                poblacionMutada.NumeroGeneracion <= _parametrosCorte.LimiteIteraciones && 
+                indiceIndividuo < poblacionMutada.PoblacionActual.Count; 
+                indiceIndividuo++)
             {
                 var individuo = poblacionMutada.PoblacionActual[indiceIndividuo];
 

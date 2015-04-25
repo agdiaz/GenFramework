@@ -30,9 +30,9 @@
         {
             this.btnEjecutar = new System.Windows.Forms.Button();
             this.grpParametros = new System.Windows.Forms.GroupBox();
-            this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
+            this.nudPesoMaximo = new System.Windows.Forms.NumericUpDown();
             this.lblPesoMax = new System.Windows.Forms.Label();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.nudPesoMinimo = new System.Windows.Forms.NumericUpDown();
             this.lblPesoMin = new System.Windows.Forms.Label();
             this.nudAltura = new System.Windows.Forms.NumericUpDown();
             this.lblAlturaSuperar = new System.Windows.Forms.Label();
@@ -47,13 +47,16 @@
             this.lblGlobalMejorIndividuo = new System.Windows.Forms.Label();
             this.nudTiempo = new System.Windows.Forms.NumericUpDown();
             this.lblTiempo = new System.Windows.Forms.Label();
+            this.nudLimiteVueltas = new System.Windows.Forms.NumericUpDown();
+            this.lblLimiteVueltas = new System.Windows.Forms.Label();
             this.grpParametros.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudPesoMaximo)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudPesoMinimo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudAltura)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudPoblacionInicial)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudTiempo)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudLimiteVueltas)).BeginInit();
             this.SuspendLayout();
             // 
             // btnEjecutar
@@ -68,9 +71,11 @@
             // 
             // grpParametros
             // 
-            this.grpParametros.Controls.Add(this.numericUpDown2);
+            this.grpParametros.Controls.Add(this.lblLimiteVueltas);
+            this.grpParametros.Controls.Add(this.nudLimiteVueltas);
+            this.grpParametros.Controls.Add(this.nudPesoMaximo);
             this.grpParametros.Controls.Add(this.lblPesoMax);
-            this.grpParametros.Controls.Add(this.numericUpDown1);
+            this.grpParametros.Controls.Add(this.nudPesoMinimo);
             this.grpParametros.Controls.Add(this.lblPesoMin);
             this.grpParametros.Controls.Add(this.nudAltura);
             this.grpParametros.Controls.Add(this.lblAlturaSuperar);
@@ -83,13 +88,13 @@
             this.grpParametros.TabStop = false;
             this.grpParametros.Text = "Parametros";
             // 
-            // numericUpDown2
+            // nudPesoMaximo
             // 
-            this.numericUpDown2.Location = new System.Drawing.Point(151, 97);
-            this.numericUpDown2.Name = "numericUpDown2";
-            this.numericUpDown2.Size = new System.Drawing.Size(43, 20);
-            this.numericUpDown2.TabIndex = 7;
-            this.numericUpDown2.Value = new decimal(new int[] {
+            this.nudPesoMaximo.Location = new System.Drawing.Point(151, 97);
+            this.nudPesoMaximo.Name = "nudPesoMaximo";
+            this.nudPesoMaximo.Size = new System.Drawing.Size(43, 20);
+            this.nudPesoMaximo.TabIndex = 7;
+            this.nudPesoMaximo.Value = new decimal(new int[] {
             80,
             0,
             0,
@@ -104,13 +109,13 @@
             this.lblPesoMax.TabIndex = 6;
             this.lblPesoMax.Text = "Peso individuo max. (kg)";
             // 
-            // numericUpDown1
+            // nudPesoMinimo
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(151, 71);
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(43, 20);
-            this.numericUpDown1.TabIndex = 5;
-            this.numericUpDown1.Value = new decimal(new int[] {
+            this.nudPesoMinimo.Location = new System.Drawing.Point(151, 71);
+            this.nudPesoMinimo.Name = "nudPesoMinimo";
+            this.nudPesoMinimo.Size = new System.Drawing.Size(43, 20);
+            this.nudPesoMinimo.TabIndex = 5;
+            this.nudPesoMinimo.Value = new decimal(new int[] {
             40,
             0,
             0,
@@ -262,6 +267,22 @@
             this.lblTiempo.TabIndex = 3;
             this.lblTiempo.Text = "Intervalo (seg):";
             // 
+            // nudLimiteVueltas
+            // 
+            this.nudLimiteVueltas.Location = new System.Drawing.Point(126, 123);
+            this.nudLimiteVueltas.Name = "nudLimiteVueltas";
+            this.nudLimiteVueltas.Size = new System.Drawing.Size(68, 20);
+            this.nudLimiteVueltas.TabIndex = 4;
+            // 
+            // lblLimiteVueltas
+            // 
+            this.lblLimiteVueltas.AutoSize = true;
+            this.lblLimiteVueltas.Location = new System.Drawing.Point(6, 125);
+            this.lblLimiteVueltas.Name = "lblLimiteVueltas";
+            this.lblLimiteVueltas.Size = new System.Drawing.Size(113, 13);
+            this.lblLimiteVueltas.TabIndex = 6;
+            this.lblLimiteVueltas.Text = "Límite de vueltas máx:";
+            // 
             // EjecutorAlgortimo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -276,13 +297,14 @@
             this.Text = "Ejecutor de algoritmo genético";
             this.grpParametros.ResumeLayout(false);
             this.grpParametros.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudPesoMaximo)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudPesoMinimo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudAltura)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudPoblacionInicial)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudTiempo)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nudLimiteVueltas)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -300,15 +322,17 @@
         private System.Windows.Forms.NumericUpDown nudAltura;
         private System.Windows.Forms.Label lblAlturaSuperar;
         private System.Windows.Forms.Label lblPesoMin;
-        private System.Windows.Forms.NumericUpDown numericUpDown2;
+        private System.Windows.Forms.NumericUpDown nudPesoMaximo;
         private System.Windows.Forms.Label lblPesoMax;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
+        private System.Windows.Forms.NumericUpDown nudPesoMinimo;
         private System.Windows.Forms.Label lblGlobalMejorIndividuo;
         private System.Windows.Forms.Label lblGlobalPeorIndividuo;
         private System.Windows.Forms.TextBox txtGlobalPeorIndividuo;
         private System.Windows.Forms.TextBox txtGlobalMejorIndividuo;
         private System.Windows.Forms.TextBox txtGlobalPorcentajeExito;
         private System.Windows.Forms.Label lblGlobalPorcentajeExito;
+        private System.Windows.Forms.Label lblLimiteVueltas;
+        private System.Windows.Forms.NumericUpDown nudLimiteVueltas;
     }
 }
 

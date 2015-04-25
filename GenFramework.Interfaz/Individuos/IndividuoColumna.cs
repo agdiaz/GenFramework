@@ -19,6 +19,8 @@ namespace GenFramework.Interfaz.Individuos
         public IndividuoColumna(int alto, int largo, int peso)
             : base(3)
         {
+            this.Genotipo = typeof(IndividuoColumna);
+
             base.Cromosoma.Genes.SetValue(new GenAlto(alto), 0);
             base.Cromosoma.Genes.SetValue(new GenLargo(largo), 1);
             base.Cromosoma.Genes.SetValue(new GenPeso(peso), 2);

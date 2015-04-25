@@ -9,5 +9,8 @@ namespace GenFramework.Interfaces.Poblacion
     public interface IIndividuo 
     {
         ICromosoma Cromosoma { get; }
+        Type Genotipo { get;}
+
+        IIndividuo GenerarDescendencia(IIndividuo individuo);
     }
 }

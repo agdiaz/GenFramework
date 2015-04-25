@@ -10,6 +10,7 @@ namespace GenFramework.Interfaces.Poblacion
     public interface IPoblacion
     {
         IList<IIndividuo> PoblacionActual { get; }
+        int NumeroGeneracion { get; set; }
 
         IIndividuo ObtenerIndividuo();
     }

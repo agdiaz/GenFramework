@@ -19,11 +19,12 @@ namespace GenFramework.Implementacion.OperadorCruzamiento
         {
             this._parametrosCruzamientoSimple = _parametrosCruzamientoSimple;
         }
+
         #region IOperadorCruzamiento
         public IPoblacion Cruzar(IPoblacion poblacionSeleccionada)
         {
             var individuos = new List<IIndividuo>();
-            var poblacionFinal = new Poblacion.Poblacion(individuos);
+            var poblacionFinal = new Poblacion.Poblacion(poblacionSeleccionada.NumeroGeneracion, individuos);
 
             for (int cantidadIndividuos = 0; cantidadIndividuos < (int)poblacionSeleccionada.PoblacionActual.Count / 2; cantidadIndividuos++)
             {
@@ -42,8 +43,8 @@ namespace GenFramework.Implementacion.OperadorCruzamiento
 
         private Tuple<IIndividuo, IIndividuo> CruzarIndividuos(IIndividuo individuo1, IIndividuo individuo2)
         {
-            IIndividuo hijo1 = new GenFramework.Implementacion.Poblacion.Individuo(individuo1.Cromosoma.CantidadGenes);
-            IIndividuo hijo2 = new GenFramework.Implementacion.Poblacion.Individuo(individuo1.Cromosoma.CantidadGenes);
+            IIndividuo hijo1 = individuo1.GenerarDescendencia(individuo1);
+            IIndividuo hijo2 = individuo1.GenerarDescendencia(individuo1);
 
             for (int indiceGenPadre = 0; indiceGenPadre <= _parametrosCruzamientoSimple.IndiceCorte; indiceGenPadre++)
             {
