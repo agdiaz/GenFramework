@@ -65,6 +65,9 @@ namespace GenFramework.Test
             _operadorMutacion.Expect(e => e.Mutar(_poblacionInicial))
                 .Repeat.Once()
                 .Return(_poblacionInicial);
+            _operadorCorte.Expect(e => e.CortarEjecucion(_poblacionInicial))
+                .Repeat.Once()
+                .Return(true);
 
             var parametros = MockRepository.GenerateMock<IParametros>();
             var poblacionFinal = this._algoritmoGenetico.Ejecutar(parametros);
