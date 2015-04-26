@@ -19,11 +19,12 @@ namespace GenFramework.Interfaz.FuncionFitness
             }
             else
             {
-                var alto = (decimal)((IGen)columna.Cromosoma.Genes.GetValue(0)).Valor;
-                var largo = (decimal)((IGen)columna.Cromosoma.Genes.GetValue(1)).Valor;
-                var peso = (decimal)((IGen)columna.Cromosoma.Genes.GetValue(2)).Valor;
+                var alto = ((IGen)columna.Cromosoma.Genes.GetValue(0)).Valor;
+                var largo =((IGen)columna.Cromosoma.Genes.GetValue(1)).Valor;
+                var peso = ((IGen)columna.Cromosoma.Genes.GetValue(2)).Valor;
 
-                var salto = (alto + largo) * 1 / peso;
+                var salto = (alto + (largo/(largo + alto))) * (1 / peso);
+                
                 return salto;
             }
         }

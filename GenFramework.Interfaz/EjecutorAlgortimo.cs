@@ -36,7 +36,7 @@ namespace GenFramework.Interfaz
         public EjecutorAlgortimo()
         {
             InitializeComponent();
-            this._intervaloTimer = Convert.ToInt32(nudTiempo.Value) * 1000;
+            this._intervaloTimer = 100;
             this._backgroundWorker = new BackgroundWorker();
             this._backgroundWorker.DoWork += _backgroundWorker_DoWork;
             this._backgroundWorker.RunWorkerCompleted += _backgroundWorker_RunWorkerCompleted;
@@ -65,7 +65,7 @@ namespace GenFramework.Interfaz
             analisis = new OperadorAnalisisPoblacion(new ParametrosAnalisisPoblacion() { Funcion = funcionFitness });
 
             IAlgoritmoGenetico algoritmo = new AlgoritmoGenetico(poblacionInicial,
-                new OperadorSeleccionPorTorneo(new ParametrosSeleccion() { CantidadIndividuosASeleccionar = poblacionInicial.PoblacionActual.Count, FuncionFitness = funcionFitness }),
+                new OperadorSeleccionPorTorneo(new ParametrosSeleccion() { CantidadIndividuosASeleccionar = (int)nudSeleccionar.Value, FuncionFitness = funcionFitness }),
                 new OperadorCruzamientoSimple(new ParametrosCruzamiento() { IndiceCorte = 1 }),
                 new OperadorMutacionConstante(new ParametrosMutacion() { IndiceMutacion = 5, ProbabilidadMutarPoblacion = 50}),
                 new OperadorCorteSimple(new ParametrosCorte() { FuncionFitness = funcionFitness, UmbralCorte = (int)nudAltura.Value, LimiteIteraciones = (int)nudLimiteVueltas.Value }));
@@ -86,30 +86,25 @@ namespace GenFramework.Interfaz
             MessageBox.Show("Fin de la ejecución");
             this.btnEjecutar.Enabled = true;
         }
+        
         private IPoblacion GenerarPoblacion()
         {
-            var columna1 = new IndividuoColumna(100, 30, 10);
-            var columna2 = new IndividuoColumna(100, 30, 20);
-            var columna3 = new IndividuoColumna(100, 30, 30);
-            var columna4 = new IndividuoColumna(100, 30, 40);
-            var columna5 = new IndividuoColumna(100, 30, 50);
-            var columna6 = new IndividuoColumna(100, 30, 60);
-            var columna7 = new IndividuoColumna(100, 30, 70);
-            var columna8 = new IndividuoColumna(100, 30, 80);
-            var columna9 = new IndividuoColumna(100, 30, 90);
-            var columna10 = new IndividuoColumna(100, 30, 100);
-
             var poblacionInicial = new Poblacion();
-            poblacionInicial.PoblacionActual.Add(columna1);
-            poblacionInicial.PoblacionActual.Add(columna2);
-            poblacionInicial.PoblacionActual.Add(columna3);
-            poblacionInicial.PoblacionActual.Add(columna4);
-            poblacionInicial.PoblacionActual.Add(columna5);
-            poblacionInicial.PoblacionActual.Add(columna6);
-            poblacionInicial.PoblacionActual.Add(columna7);
-            poblacionInicial.PoblacionActual.Add(columna8);
-            poblacionInicial.PoblacionActual.Add(columna9);
-            poblacionInicial.PoblacionActual.Add(columna10);
+            poblacionInicial.CantidadIndividuos = (int)nudPoblacionInicial.Value;
+
+            var generadorRandom = new Random();
+            for (int indiceIndividuos = 0; indiceIndividuos < (int)nudPoblacionInicial.Value; indiceIndividuos++)
+            {
+
+                var alto = generadorRandom.Next((int)nudAlturaMin.Value, (int)nudAlturaMax.Value);
+                var largo = generadorRandom.Next((int)nudLargoMin.Value, (int)nudLargoMax.Value);
+                var peso = generadorRandom.Next((int)nudPesoMinimo.Value, (int)nudPesoMaximo.Value);
+
+                var individuo = new IndividuoColumna(alto, largo, peso);
+                poblacionInicial.PoblacionActual.Add(individuo);
+            }
+            
+
 
             return poblacionInicial;
         }
@@ -140,16 +135,16 @@ namespace GenFramework.Interfaz
 
                 this.txtGlobalPeorIndividuo.Text = analisis.PeorFitnessGlobal.ToString();
                 this.txtGlobalPeorIndividuoId.Text = analisis.PeorIndividuoGlobal.IdentificacionUnica.ToString();
-                this.txtGlobalPeorIndividuoGen.Text = analisis.MejorIndividuoGlobal.ToString();
+                this.txtGlobalPeorIndividuoGen.Text = analisis.PeorIndividuoGlobal.ToString();
 
 
                 this.txtVueltaMejorIndividuo.Text = analisis.MejorFitnessVuelta.ToString();
                 this.txtVueltaMejorIndividuoId.Text = analisis.MejorIndividuoVuelta.IdentificacionUnica.ToString();
-                this.txtVueltaMejorIndividuoGen.Text = analisis.MejorIndividuoGlobal.ToString();
+                this.txtVueltaMejorIndividuoGen.Text = analisis.MejorIndividuoVuelta.ToString();
 
                 this.txtVueltaPeorIndividuo.Text = analisis.PeorFitnessVuelta.ToString();
                 this.txtVueltaPeorIndividuoId.Text = analisis.PeorIndividuoVuelta.IdentificacionUnica.ToString();
-                this.txtVueltaPeorIndividuoGen.Text = analisis.MejorIndividuoGlobal.ToString();
+                this.txtVueltaPeorIndividuoGen.Text = analisis.PeorIndividuoVuelta.ToString();
 
 
             }), null);

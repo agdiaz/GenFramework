@@ -12,6 +12,8 @@ namespace GenFramework.Implementacion.Poblacion
     {
         public IList<IIndividuo> PoblacionActual { get; private set; }
         public int NumeroGeneracion { get; set; }
+        public int CantidadIndividuos { get; set; }
+        private Random _generadorAleatorio;
 
         public Poblacion() : this(0, new List<IIndividuo>()) { }
 
@@ -21,11 +23,13 @@ namespace GenFramework.Implementacion.Poblacion
         {
             this.NumeroGeneracion = numeroGeneracion;
             this.PoblacionActual = individuos;
+            this._generadorAleatorio = new Random();
         }
 
         public IIndividuo ObtenerIndividuo()
         {
-            var indiceRandom = new Random().Next(0, PoblacionActual.Count - 1);
+            var indiceRandom = _generadorAleatorio.Next(PoblacionActual.Count);
+
             return PoblacionActual[indiceRandom];
         }
     }

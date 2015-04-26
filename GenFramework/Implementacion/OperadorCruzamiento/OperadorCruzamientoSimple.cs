@@ -24,10 +24,11 @@ namespace GenFramework.Implementacion.OperadorCruzamiento
         #region IOperadorCruzamiento
         public IPoblacion Cruzar(IPoblacion poblacionSeleccionada)
         {
-            var individuos = new List<IIndividuo>();
+            var individuos = new List<IIndividuo>(poblacionSeleccionada.PoblacionActual.Count);
             var poblacionFinal = new Poblacion.Poblacion(poblacionSeleccionada.NumeroGeneracion, individuos);
+            poblacionFinal.CantidadIndividuos = poblacionSeleccionada.CantidadIndividuos;
 
-            for (int cantidadIndividuos = 0; cantidadIndividuos < (int)poblacionSeleccionada.PoblacionActual.Count / 2; cantidadIndividuos++)
+            for (int cantidadIndividuos = 0; cantidadIndividuos < poblacionSeleccionada.CantidadIndividuos; cantidadIndividuos++)
             {
                 var individuo1 = poblacionSeleccionada.ObtenerIndividuo();
                 var individuo2 = poblacionSeleccionada.ObtenerIndividuo();

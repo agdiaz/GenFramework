@@ -11,6 +11,7 @@ namespace GenFramework.Interfaces.Poblacion
     {
         IList<IIndividuo> PoblacionActual { get; }
         int NumeroGeneracion { get; set; }
+        int CantidadIndividuos { get; set; }
 
         IIndividuo ObtenerIndividuo();
     }

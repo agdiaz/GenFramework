@@ -21,14 +21,16 @@ namespace GenFramework.Implementacion.OperadorSeleccion
 
         public IPoblacion Seleccionar(IPoblacion poblacionInicial)
         {
-            var poblacionSeleccionada = new Poblacion.Poblacion(poblacionInicial.NumeroGeneracion, new List<IIndividuo>(poblacionInicial.PoblacionActual));
+            var poblacionSeleccionada = new Poblacion.Poblacion(poblacionInicial.NumeroGeneracion, new List<IIndividuo>(poblacionInicial.PoblacionActual.Count));
+            poblacionSeleccionada.CantidadIndividuos = poblacionInicial.CantidadIndividuos;
 
-            for (int cantidadIndividuos = 0; cantidadIndividuos < _parametrosSeleccionPorTorneo.CantidadIndividuosASeleccionar; cantidadIndividuos++)
+            for (int cantidadIndividuos = 0; cantidadIndividuos < _parametrosSeleccionPorTorneo.CantidadIndividuosASeleccionar; cantidadIndividuos+=2)
             {
                 IIndividuo individuo1 = poblacionInicial.ObtenerIndividuo();
                 IIndividuo individuo2 = poblacionInicial.ObtenerIndividuo();
 
                 IIndividuo individuoGanador = this.ObtenerGanador(individuo1, individuo2);
+                poblacionSeleccionada.PoblacionActual.Add(individuoGanador);
             }
 
             return poblacionSeleccionada;
@@ -38,7 +40,10 @@ namespace GenFramework.Implementacion.OperadorSeleccion
         {
             IFuncionFitness funcionFitness = _parametrosSeleccionPorTorneo.FuncionFitness;
 
-            if (funcionFitness.Evaluar(individuo1) >= funcionFitness.Evaluar(individuo2))
+            var fitness1 = funcionFitness.Evaluar(individuo1);
+            var fitness2 = funcionFitness.Evaluar(individuo2);
+
+            if (fitness1 >= fitness2)
             {
                 return individuo1;
             }
