@@ -30,6 +30,8 @@
         {
             this.btnEjecutar = new System.Windows.Forms.Button();
             this.grpParametros = new System.Windows.Forms.GroupBox();
+            this.lblLimiteVueltas = new System.Windows.Forms.Label();
+            this.nudLimiteVueltas = new System.Windows.Forms.NumericUpDown();
             this.nudPesoMaximo = new System.Windows.Forms.NumericUpDown();
             this.lblPesoMax = new System.Windows.Forms.Label();
             this.nudPesoMinimo = new System.Windows.Forms.NumericUpDown();
@@ -39,6 +41,10 @@
             this.lblPoblacionInicial = new System.Windows.Forms.Label();
             this.nudPoblacionInicial = new System.Windows.Forms.NumericUpDown();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.lblVueltaPeorIndividuo = new System.Windows.Forms.Label();
+            this.lblVueltaMejorIndividuo = new System.Windows.Forms.Label();
+            this.txtVueltaPeorIndividuo = new System.Windows.Forms.TextBox();
+            this.txtVueltaMejorIndividuo = new System.Windows.Forms.TextBox();
             this.txtGlobalPorcentajeExito = new System.Windows.Forms.TextBox();
             this.lblGlobalPorcentajeExito = new System.Windows.Forms.Label();
             this.txtGlobalPeorIndividuo = new System.Windows.Forms.TextBox();
@@ -47,16 +53,16 @@
             this.lblGlobalMejorIndividuo = new System.Windows.Forms.Label();
             this.nudTiempo = new System.Windows.Forms.NumericUpDown();
             this.lblTiempo = new System.Windows.Forms.Label();
-            this.nudLimiteVueltas = new System.Windows.Forms.NumericUpDown();
-            this.lblLimiteVueltas = new System.Windows.Forms.Label();
+            this.txtNumeroGeneracion = new System.Windows.Forms.TextBox();
+            this.lblNumeroGeneracion = new System.Windows.Forms.Label();
             this.grpParametros.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudLimiteVueltas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudPesoMaximo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudPesoMinimo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudAltura)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudPoblacionInicial)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudTiempo)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudLimiteVueltas)).BeginInit();
             this.SuspendLayout();
             // 
             // btnEjecutar
@@ -87,6 +93,27 @@
             this.grpParametros.TabIndex = 1;
             this.grpParametros.TabStop = false;
             this.grpParametros.Text = "Parametros";
+            // 
+            // lblLimiteVueltas
+            // 
+            this.lblLimiteVueltas.AutoSize = true;
+            this.lblLimiteVueltas.Location = new System.Drawing.Point(6, 125);
+            this.lblLimiteVueltas.Name = "lblLimiteVueltas";
+            this.lblLimiteVueltas.Size = new System.Drawing.Size(113, 13);
+            this.lblLimiteVueltas.TabIndex = 6;
+            this.lblLimiteVueltas.Text = "Límite de vueltas máx:";
+            // 
+            // nudLimiteVueltas
+            // 
+            this.nudLimiteVueltas.Location = new System.Drawing.Point(126, 123);
+            this.nudLimiteVueltas.Name = "nudLimiteVueltas";
+            this.nudLimiteVueltas.Size = new System.Drawing.Size(68, 20);
+            this.nudLimiteVueltas.TabIndex = 4;
+            this.nudLimiteVueltas.Value = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
             // 
             // nudPesoMaximo
             // 
@@ -184,6 +211,12 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.txtNumeroGeneracion);
+            this.groupBox1.Controls.Add(this.lblNumeroGeneracion);
+            this.groupBox1.Controls.Add(this.lblVueltaPeorIndividuo);
+            this.groupBox1.Controls.Add(this.lblVueltaMejorIndividuo);
+            this.groupBox1.Controls.Add(this.txtVueltaPeorIndividuo);
+            this.groupBox1.Controls.Add(this.txtVueltaMejorIndividuo);
             this.groupBox1.Controls.Add(this.txtGlobalPorcentajeExito);
             this.groupBox1.Controls.Add(this.lblGlobalPorcentajeExito);
             this.groupBox1.Controls.Add(this.txtGlobalPeorIndividuo);
@@ -197,9 +230,41 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Resultados";
             // 
+            // lblVueltaPeorIndividuo
+            // 
+            this.lblVueltaPeorIndividuo.AutoSize = true;
+            this.lblVueltaPeorIndividuo.Location = new System.Drawing.Point(6, 154);
+            this.lblVueltaPeorIndividuo.Name = "lblVueltaPeorIndividuo";
+            this.lblVueltaPeorIndividuo.Size = new System.Drawing.Size(182, 13);
+            this.lblVueltaPeorIndividuo.TabIndex = 9;
+            this.lblVueltaPeorIndividuo.Text = "Vuelta - Peor individuo (salto en cm.):";
+            // 
+            // lblVueltaMejorIndividuo
+            // 
+            this.lblVueltaMejorIndividuo.AutoSize = true;
+            this.lblVueltaMejorIndividuo.Location = new System.Drawing.Point(6, 128);
+            this.lblVueltaMejorIndividuo.Name = "lblVueltaMejorIndividuo";
+            this.lblVueltaMejorIndividuo.Size = new System.Drawing.Size(186, 13);
+            this.lblVueltaMejorIndividuo.TabIndex = 8;
+            this.lblVueltaMejorIndividuo.Text = "Vuelta - Mejor individuo (salto en cm.):";
+            // 
+            // txtVueltaPeorIndividuo
+            // 
+            this.txtVueltaPeorIndividuo.Location = new System.Drawing.Point(202, 151);
+            this.txtVueltaPeorIndividuo.Name = "txtVueltaPeorIndividuo";
+            this.txtVueltaPeorIndividuo.Size = new System.Drawing.Size(100, 20);
+            this.txtVueltaPeorIndividuo.TabIndex = 7;
+            // 
+            // txtVueltaMejorIndividuo
+            // 
+            this.txtVueltaMejorIndividuo.Location = new System.Drawing.Point(202, 125);
+            this.txtVueltaMejorIndividuo.Name = "txtVueltaMejorIndividuo";
+            this.txtVueltaMejorIndividuo.Size = new System.Drawing.Size(100, 20);
+            this.txtVueltaMejorIndividuo.TabIndex = 6;
+            // 
             // txtGlobalPorcentajeExito
             // 
-            this.txtGlobalPorcentajeExito.Location = new System.Drawing.Point(202, 70);
+            this.txtGlobalPorcentajeExito.Location = new System.Drawing.Point(202, 96);
             this.txtGlobalPorcentajeExito.Name = "txtGlobalPorcentajeExito";
             this.txtGlobalPorcentajeExito.Size = new System.Drawing.Size(100, 20);
             this.txtGlobalPorcentajeExito.TabIndex = 5;
@@ -207,7 +272,7 @@
             // lblGlobalPorcentajeExito
             // 
             this.lblGlobalPorcentajeExito.AutoSize = true;
-            this.lblGlobalPorcentajeExito.Location = new System.Drawing.Point(6, 73);
+            this.lblGlobalPorcentajeExito.Location = new System.Drawing.Point(6, 99);
             this.lblGlobalPorcentajeExito.Name = "lblGlobalPorcentajeExito";
             this.lblGlobalPorcentajeExito.Size = new System.Drawing.Size(133, 13);
             this.lblGlobalPorcentajeExito.TabIndex = 4;
@@ -215,14 +280,14 @@
             // 
             // txtGlobalPeorIndividuo
             // 
-            this.txtGlobalPeorIndividuo.Location = new System.Drawing.Point(202, 44);
+            this.txtGlobalPeorIndividuo.Location = new System.Drawing.Point(202, 70);
             this.txtGlobalPeorIndividuo.Name = "txtGlobalPeorIndividuo";
             this.txtGlobalPeorIndividuo.Size = new System.Drawing.Size(100, 20);
             this.txtGlobalPeorIndividuo.TabIndex = 3;
             // 
             // txtGlobalMejorIndividuo
             // 
-            this.txtGlobalMejorIndividuo.Location = new System.Drawing.Point(202, 18);
+            this.txtGlobalMejorIndividuo.Location = new System.Drawing.Point(202, 44);
             this.txtGlobalMejorIndividuo.Name = "txtGlobalMejorIndividuo";
             this.txtGlobalMejorIndividuo.Size = new System.Drawing.Size(100, 20);
             this.txtGlobalMejorIndividuo.TabIndex = 2;
@@ -230,7 +295,7 @@
             // lblGlobalPeorIndividuo
             // 
             this.lblGlobalPeorIndividuo.AutoSize = true;
-            this.lblGlobalPeorIndividuo.Location = new System.Drawing.Point(6, 48);
+            this.lblGlobalPeorIndividuo.Location = new System.Drawing.Point(6, 74);
             this.lblGlobalPeorIndividuo.Name = "lblGlobalPeorIndividuo";
             this.lblGlobalPeorIndividuo.Size = new System.Drawing.Size(182, 13);
             this.lblGlobalPeorIndividuo.TabIndex = 1;
@@ -239,7 +304,7 @@
             // lblGlobalMejorIndividuo
             // 
             this.lblGlobalMejorIndividuo.AutoSize = true;
-            this.lblGlobalMejorIndividuo.Location = new System.Drawing.Point(6, 21);
+            this.lblGlobalMejorIndividuo.Location = new System.Drawing.Point(6, 47);
             this.lblGlobalMejorIndividuo.Name = "lblGlobalMejorIndividuo";
             this.lblGlobalMejorIndividuo.Size = new System.Drawing.Size(186, 13);
             this.lblGlobalMejorIndividuo.TabIndex = 0;
@@ -267,21 +332,21 @@
             this.lblTiempo.TabIndex = 3;
             this.lblTiempo.Text = "Intervalo (seg):";
             // 
-            // nudLimiteVueltas
+            // txtNumeroGeneracion
             // 
-            this.nudLimiteVueltas.Location = new System.Drawing.Point(126, 123);
-            this.nudLimiteVueltas.Name = "nudLimiteVueltas";
-            this.nudLimiteVueltas.Size = new System.Drawing.Size(68, 20);
-            this.nudLimiteVueltas.TabIndex = 4;
+            this.txtNumeroGeneracion.Location = new System.Drawing.Point(202, 19);
+            this.txtNumeroGeneracion.Name = "txtNumeroGeneracion";
+            this.txtNumeroGeneracion.Size = new System.Drawing.Size(100, 20);
+            this.txtNumeroGeneracion.TabIndex = 11;
             // 
-            // lblLimiteVueltas
+            // lblNumeroGeneracion
             // 
-            this.lblLimiteVueltas.AutoSize = true;
-            this.lblLimiteVueltas.Location = new System.Drawing.Point(6, 125);
-            this.lblLimiteVueltas.Name = "lblLimiteVueltas";
-            this.lblLimiteVueltas.Size = new System.Drawing.Size(113, 13);
-            this.lblLimiteVueltas.TabIndex = 6;
-            this.lblLimiteVueltas.Text = "Límite de vueltas máx:";
+            this.lblNumeroGeneracion.AutoSize = true;
+            this.lblNumeroGeneracion.Location = new System.Drawing.Point(6, 22);
+            this.lblNumeroGeneracion.Name = "lblNumeroGeneracion";
+            this.lblNumeroGeneracion.Size = new System.Drawing.Size(118, 13);
+            this.lblNumeroGeneracion.TabIndex = 10;
+            this.lblNumeroGeneracion.Text = "Número de generación:";
             // 
             // EjecutorAlgortimo
             // 
@@ -297,6 +362,7 @@
             this.Text = "Ejecutor de algoritmo genético";
             this.grpParametros.ResumeLayout(false);
             this.grpParametros.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudLimiteVueltas)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudPesoMaximo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudPesoMinimo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudAltura)).EndInit();
@@ -304,7 +370,6 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudTiempo)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nudLimiteVueltas)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -333,6 +398,12 @@
         private System.Windows.Forms.Label lblGlobalPorcentajeExito;
         private System.Windows.Forms.Label lblLimiteVueltas;
         private System.Windows.Forms.NumericUpDown nudLimiteVueltas;
+        private System.Windows.Forms.TextBox txtVueltaPeorIndividuo;
+        private System.Windows.Forms.TextBox txtVueltaMejorIndividuo;
+        private System.Windows.Forms.Label lblVueltaPeorIndividuo;
+        private System.Windows.Forms.Label lblVueltaMejorIndividuo;
+        private System.Windows.Forms.TextBox txtNumeroGeneracion;
+        private System.Windows.Forms.Label lblNumeroGeneracion;
     }
 }
 

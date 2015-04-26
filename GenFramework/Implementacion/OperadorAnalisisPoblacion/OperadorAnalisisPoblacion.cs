@@ -14,10 +14,16 @@ namespace GenFramework.Implementacion.OperadorAnalisisPoblacion
 
         #region Constructor
         private IParametrosAnalisisPoblacion _parametrosAnalisisPoblacion;
-        public IIndividuo ObtenerMejorGlobal {get; set;}
-        public IIndividuo ObtenerPeorGlobal {get; set;}
-        public IIndividuo ObtenerMejorVuelta {get; set;}
-        public IIndividuo ObtenerPeorVuelta { get; set; }
+
+        public IIndividuo MejorIndividuoGlobal {get; private set;}
+        public IIndividuo PeorIndividuoGlobal {get; private set;}
+        public IIndividuo MejorIndividuoVuelta {get; private set;}
+        public IIndividuo PeorIndividuoVuelta { get; private set; }
+
+        public decimal MejorFitnessGlobal { get; private set; }
+        public decimal PeorFitnessGlobal { get; private set; }
+        public decimal MejorFitnessVuelta { get; private set; }
+        public decimal PeorFitnessVuelta { get; private set; }
 
         public OperadorAnalisisPoblacion(IParametrosAnalisisPoblacion parametrosAnalisisPoblacion)
         {
@@ -27,31 +33,37 @@ namespace GenFramework.Implementacion.OperadorAnalisisPoblacion
 
         public void Analizar(IPoblacion poblacion)
         {
-            this.ObtenerMejorVuelta = null;
-            this.ObtenerPeorVuelta = null;
+            this.MejorIndividuoVuelta = null;
+            this.PeorIndividuoVuelta = null;
+            this.MejorFitnessVuelta = Int32.MinValue;
+            this.PeorFitnessVuelta = Int32.MinValue;
 
             foreach (IIndividuo individuo in poblacion.PoblacionActual)
             {
                 var fitness = this._parametrosAnalisisPoblacion.Funcion.Evaluar(individuo);
 
                 // Mayores
-                if (ObtenerMejorGlobal == null || fitness > this._parametrosAnalisisPoblacion.Funcion.Evaluar(ObtenerMejorGlobal))
+                if (MejorIndividuoGlobal == null || fitness > MejorFitnessGlobal)
                 {
-                    this.ObtenerMejorGlobal = individuo;
+                    this.MejorIndividuoGlobal = individuo;
+                    this.MejorFitnessGlobal = fitness;
                 }
-                if (ObtenerMejorVuelta == null || fitness > this._parametrosAnalisisPoblacion.Funcion.Evaluar(ObtenerMejorVuelta))
+                if (MejorIndividuoVuelta == null || fitness > MejorFitnessVuelta)
                 {
-                    this.ObtenerMejorVuelta = individuo;
+                    this.MejorIndividuoVuelta = individuo;
+                    this.MejorFitnessVuelta = fitness;
                 }
 
                 // Menores
-                if (ObtenerPeorGlobal == null || fitness < this._parametrosAnalisisPoblacion.Funcion.Evaluar(ObtenerPeorGlobal))
+                if (PeorIndividuoGlobal == null || fitness < PeorFitnessGlobal)
                 {
-                    this.ObtenerPeorGlobal = individuo;
+                    this.PeorIndividuoGlobal = individuo;
+                    this.PeorFitnessGlobal = fitness;
                 }
-                if (ObtenerPeorVuelta == null || fitness < this._parametrosAnalisisPoblacion.Funcion.Evaluar(ObtenerPeorVuelta))
+                if (PeorIndividuoVuelta == null || fitness < PeorFitnessVuelta)
                 {
-                    this.ObtenerPeorVuelta = individuo;
+                    this.PeorIndividuoVuelta = individuo;
+                    this.PeorFitnessVuelta = fitness;
                 }
 
             }

@@ -9,10 +9,15 @@ namespace GenFramework.Interfaces.OperadorAnalisisPoblacion
 {
     public interface IOperadorAnalisisPoblacion
     {
-        IIndividuo ObtenerMejorGlobal {get; }
-        IIndividuo ObtenerPeorGlobal {get; }
-        IIndividuo ObtenerMejorVuelta {get; }
-        IIndividuo ObtenerPeorVuelta {get; }
+        IIndividuo MejorIndividuoGlobal {get; }
+        IIndividuo PeorIndividuoGlobal {get; }
+        IIndividuo MejorIndividuoVuelta {get; }
+        IIndividuo PeorIndividuoVuelta {get; }
+
+        decimal MejorFitnessGlobal { get; }
+        decimal PeorFitnessGlobal { get; }
+        decimal MejorFitnessVuelta { get; }
+        decimal PeorFitnessVuelta { get; }
 
         void Analizar(IPoblacion poblacion);
     }

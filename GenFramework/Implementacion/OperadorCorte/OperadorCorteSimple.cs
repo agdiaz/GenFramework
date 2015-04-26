@@ -23,18 +23,15 @@ namespace GenFramework.Implementacion.OperadorCorte
             bool cortar = false;
 
             for (int indiceIndividuo = 0; 
-                !cortar && 
-                poblacionMutada.NumeroGeneracion <= _parametrosCorte.LimiteIteraciones && 
-                indiceIndividuo < poblacionMutada.PoblacionActual.Count; 
-                indiceIndividuo++)
+                !cortar && indiceIndividuo < poblacionMutada.PoblacionActual.Count; indiceIndividuo++)
             {
                 var individuo = poblacionMutada.PoblacionActual[indiceIndividuo];
 
                 var valorFitness = _parametrosCorte.FuncionFitness.Evaluar(individuo);
 
-                cortar = valorFitness >= _parametrosCorte.UmbralCorte;
+                cortar = poblacionMutada.NumeroGeneracion > _parametrosCorte.LimiteIteraciones || valorFitness >= _parametrosCorte.UmbralCorte;
             }
-
+            
             return cortar;
         }
     }

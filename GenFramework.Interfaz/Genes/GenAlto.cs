@@ -9,10 +9,10 @@ namespace GenFramework.Interfaz.Genetica
 {
     public class GenAlto : IGen
     {
-        public int Alto { get; set; }
+        public decimal Alto { get; set; }
         public IComparable Valor { get { return Alto; } }
 
-        public GenAlto(int alto)
+        public GenAlto(decimal alto)
         {
             this.Alto = alto;
         }

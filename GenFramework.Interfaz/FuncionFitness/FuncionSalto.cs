@@ -11,7 +11,7 @@ namespace GenFramework.Interfaz.FuncionFitness
 {
     public class FuncionSalto : IFuncionFitness
     {
-        public int Evaluar(IIndividuo columna)
+        public decimal Evaluar(IIndividuo columna)
         {
             if (columna.Genotipo != typeof(IndividuoColumna))
             {
@@ -19,9 +19,9 @@ namespace GenFramework.Interfaz.FuncionFitness
             }
             else
             {
-                var alto = (int)((IGen)columna.Cromosoma.Genes.GetValue(0)).Valor;
-                var largo = (int)((IGen)columna.Cromosoma.Genes.GetValue(1)).Valor;
-                var peso = (int)((IGen)columna.Cromosoma.Genes.GetValue(2)).Valor;
+                var alto = (decimal)((IGen)columna.Cromosoma.Genes.GetValue(0)).Valor;
+                var largo = (decimal)((IGen)columna.Cromosoma.Genes.GetValue(1)).Valor;
+                var peso = (decimal)((IGen)columna.Cromosoma.Genes.GetValue(2)).Valor;
 
                 return (alto + largo) * 1 / peso;
             }

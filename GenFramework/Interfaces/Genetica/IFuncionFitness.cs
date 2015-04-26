@@ -8,6 +8,6 @@ namespace GenFramework.Interfaces.Genetica
 {
     public interface IFuncionFitness
     {
-        int Evaluar(IIndividuo individuo1);
+        decimal Evaluar(IIndividuo individuo1);
     }
 }

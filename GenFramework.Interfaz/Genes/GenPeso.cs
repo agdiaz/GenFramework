@@ -9,10 +9,10 @@ namespace GenFramework.Interfaz.Genetica
 {
     public class GenPeso : IGen
     {
-        public int Peso { get; set; }
+        public decimal Peso { get; set; }
         public IComparable Valor { get { return Peso; } }
 
-        public GenPeso(int peso)
+        public GenPeso(decimal peso)
         {
             this.Peso = peso;
         }

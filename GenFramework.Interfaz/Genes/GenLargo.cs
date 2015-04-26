@@ -9,10 +9,10 @@ namespace GenFramework.Interfaz.Genetica
 {
     public class GenLargo : IGen
     {
-        public int Largo { get; set; }
+        public decimal Largo { get; set; }
         public IComparable Valor { get { return Largo; } }
 
-        public GenLargo(int largo)
+        public GenLargo(decimal largo)
         {
             this.Largo = largo;
         }

@@ -25,7 +25,6 @@ namespace GenFramework.Test
         private IPoblacion _poblacionInicial;
         private List<IIndividuo> _individuos;
         private int _numeroGeneracion;
-        private IOperadorAnalisisPoblacion _operadorAnalisis;
 
         [TestInitialize]
         public void TestInitialize()
@@ -36,7 +35,6 @@ namespace GenFramework.Test
             this._operadorCruzamiento = MockRepository.GenerateMock<IOperadorCruzamiento>();
             this._operadorMutacion = MockRepository.GenerateMock<IOperadorMutacion>();
             this._operadorCorte = MockRepository.GenerateMock<IOperadorCorte>();
-            this._operadorAnalisis = MockRepository.GenerateMock<IOperadorAnalisisPoblacion>();
             this._individuos = new List<IIndividuo>();
             this._poblacionInicial = MockRepository.GenerateMock<IPoblacion>();
             this._poblacionInicial.Expect(e => e.NumeroGeneracion).Repeat.Any().Return(_numeroGeneracion);
@@ -46,8 +44,7 @@ namespace GenFramework.Test
                 _operadorSeleccion, 
                 _operadorCruzamiento, 
                 _operadorMutacion, 
-                _operadorCorte,
-                _operadorAnalisis);
+                _operadorCorte);
         }
 
         [TestCleanup]
@@ -58,7 +55,6 @@ namespace GenFramework.Test
             _operadorCruzamiento.VerifyAllExpectations();
             _operadorMutacion.VerifyAllExpectations();
             _operadorCorte.VerifyAllExpectations();
-            _operadorAnalisis.VerifyAllExpectations();
         }
 
         [TestMethod]
@@ -77,8 +73,6 @@ namespace GenFramework.Test
             _operadorCorte.Expect(e => e.CortarEjecucion(_poblacionInicial))
                 .Repeat.Once()
                 .Return(true);
-            _operadorAnalisis.Expect(e => e.Analizar(_poblacionInicial))
-                .Repeat.Once();
 
             var parametros = MockRepository.GenerateMock<IParametros>();
             parametros.Expect(e => e.IntervaloPorVuelta).Return(1000).Repeat.Any();
