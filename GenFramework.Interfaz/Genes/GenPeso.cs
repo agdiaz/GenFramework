@@ -1,4 +1,5 @@
-﻿using GenFramework.Interfaces.Genetica;
+﻿using GenFramework.Implementacion.Genetica;
+using GenFramework.Interfaces.Genetica;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,14 +8,12 @@ using System.Threading.Tasks;
 
 namespace GenFramework.Interfaz.Genetica
 {
-    public class GenPeso : IGen
+    public class GenPeso : GenBase
     {
-        public decimal Peso { get; set; }
-        public IComparable Valor { get { return Peso; } }
-
         public GenPeso(decimal peso)
         {
-            this.Peso = peso;
+            this.Valor = peso;
+            this.Nombre = "Peso";
         }
     }
 }

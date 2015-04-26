@@ -1,4 +1,5 @@
-﻿using GenFramework.Interfaces.Genetica;
+﻿using GenFramework.Implementacion.Genetica;
+using GenFramework.Interfaces.Genetica;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,14 +8,12 @@ using System.Threading.Tasks;
 
 namespace GenFramework.Interfaz.Genetica
 {
-    public class GenAlto : IGen
+    public class GenAlto : GenBase
     {
-        public decimal Alto { get; set; }
-        public IComparable Valor { get { return Alto; } }
-
         public GenAlto(decimal alto)
         {
-            this.Alto = alto;
+            this.Valor = alto;
+            this.Nombre = "Alto";
         }
     }
 }

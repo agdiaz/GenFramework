@@ -8,6 +8,7 @@ using GenFramework.Implementacion;
 using GenFramework.Interfaces.OperadorCruzamiento;
 using GenFramework.Interfaces.Poblacion;
 using GenFramework.Implementacion.Poblacion;
+using GenFramework.Interfaces.Genetica;
 
 namespace GenFramework.Implementacion.OperadorCruzamiento
 {
@@ -35,7 +36,6 @@ namespace GenFramework.Implementacion.OperadorCruzamiento
 
                 poblacionFinal.PoblacionActual.Add(hijos.Item1);
                 poblacionFinal.PoblacionActual.Add(hijos.Item2);
-            
             }
             
             return poblacionFinal;
@@ -46,16 +46,22 @@ namespace GenFramework.Implementacion.OperadorCruzamiento
             IIndividuo hijo1 = individuo1.GenerarDescendencia(individuo1);
             IIndividuo hijo2 = individuo1.GenerarDescendencia(individuo1);
 
-            for (int indiceGenPadre = 0; indiceGenPadre <= _parametrosCruzamientoSimple.IndiceCorte; indiceGenPadre++)
+            for (int indiceGen = 0; indiceGen <= _parametrosCruzamientoSimple.IndiceCorte; indiceGen++)
             {
-                hijo1.Cromosoma.Genes.SetValue(individuo1.Cromosoma.Genes.GetValue(indiceGenPadre), indiceGenPadre);
-                hijo2.Cromosoma.Genes.SetValue(individuo2.Cromosoma.Genes.GetValue(indiceGenPadre), indiceGenPadre);
+                var genPadre = individuo1.Cromosoma.Genes.GetValue(indiceGen) as IGen;
+                hijo1.Cromosoma.Genes.SetValue(genPadre.Clone(), indiceGen);
+
+                var genMadre = individuo2.Cromosoma.Genes.GetValue(indiceGen) as IGen;
+                hijo2.Cromosoma.Genes.SetValue(genMadre.Clone(), indiceGen);
             }
 
-            for (int indiceGenPadre = _parametrosCruzamientoSimple.IndiceCorte + 1; indiceGenPadre < hijo1.Cromosoma.CantidadGenes; indiceGenPadre++)
+            for (int indiceGen = _parametrosCruzamientoSimple.IndiceCorte + 1; indiceGen < individuo1.Cromosoma.CantidadGenes; indiceGen++)
             {
-                hijo1.Cromosoma.Genes.SetValue(individuo2.Cromosoma.Genes.GetValue(indiceGenPadre), indiceGenPadre);
-                hijo2.Cromosoma.Genes.SetValue(individuo1.Cromosoma.Genes.GetValue(indiceGenPadre), indiceGenPadre);
+                var genMadre = individuo2.Cromosoma.Genes.GetValue(indiceGen) as IGen;
+                hijo1.Cromosoma.Genes.SetValue(genMadre.Clone(), indiceGen);
+
+                var genPadre = individuo1.Cromosoma.Genes.GetValue(indiceGen) as IGen;
+                hijo2.Cromosoma.Genes.SetValue(genPadre.Clone(), indiceGen);
             }
 
             return new Tuple<IIndividuo, IIndividuo>(hijo1, hijo2);

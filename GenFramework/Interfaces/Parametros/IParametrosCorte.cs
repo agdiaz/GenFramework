@@ -10,7 +10,7 @@ namespace GenFramework.Interfaces.Parametros
     public interface IParametrosCorte
     {
         IFuncionFitness FuncionFitness { get; }
-        int UmbralCorte { get; }
+        decimal UmbralCorte { get; }
         int LimiteIteraciones { get; }
     }
 }

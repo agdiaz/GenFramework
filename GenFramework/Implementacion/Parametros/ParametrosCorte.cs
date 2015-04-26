@@ -11,7 +11,7 @@ namespace GenFramework.Implementacion.Parametros
     public class ParametrosCorte : IParametrosCorte 
     {
         public IFuncionFitness FuncionFitness { get; set; }
-        public int UmbralCorte {get; set;}
+        public decimal UmbralCorte {get; set;}
         public int LimiteIteraciones { get; set; }       
     }
 }

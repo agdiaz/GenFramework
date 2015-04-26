@@ -55,6 +55,22 @@
             this.lblTiempo = new System.Windows.Forms.Label();
             this.txtNumeroGeneracion = new System.Windows.Forms.TextBox();
             this.lblNumeroGeneracion = new System.Windows.Forms.Label();
+            this.lblGlobalMejorIndividuoID = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.txtGlobalMejorIndividuoId = new System.Windows.Forms.TextBox();
+            this.txtGlobalPeorIndividuoId = new System.Windows.Forms.TextBox();
+            this.txtVueltaMejorIndividuoId = new System.Windows.Forms.TextBox();
+            this.txtVueltaPeorIndividuoId = new System.Windows.Forms.TextBox();
+            this.txtVueltaPeorIndividuoGen = new System.Windows.Forms.TextBox();
+            this.txtVueltaMejorIndividuoGen = new System.Windows.Forms.TextBox();
+            this.txtGlobalPeorIndividuoGen = new System.Windows.Forms.TextBox();
+            this.txtGlobalMejorIndividuoGen = new System.Windows.Forms.TextBox();
+            this.lblVueltaPeorIndividuoGen = new System.Windows.Forms.Label();
+            this.lblVueltaMejorIndividuoGen = new System.Windows.Forms.Label();
+            this.lblGlobalPeorIndividuoGen = new System.Windows.Forms.Label();
+            this.lblGlobalMejorIndividuoGen = new System.Windows.Forms.Label();
             this.grpParametros.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudLimiteVueltas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudPesoMaximo)).BeginInit();
@@ -211,6 +227,22 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.txtVueltaPeorIndividuoGen);
+            this.groupBox1.Controls.Add(this.txtVueltaMejorIndividuoGen);
+            this.groupBox1.Controls.Add(this.txtGlobalPeorIndividuoGen);
+            this.groupBox1.Controls.Add(this.txtGlobalMejorIndividuoGen);
+            this.groupBox1.Controls.Add(this.lblVueltaPeorIndividuoGen);
+            this.groupBox1.Controls.Add(this.lblVueltaMejorIndividuoGen);
+            this.groupBox1.Controls.Add(this.lblGlobalPeorIndividuoGen);
+            this.groupBox1.Controls.Add(this.lblGlobalMejorIndividuoGen);
+            this.groupBox1.Controls.Add(this.txtVueltaPeorIndividuoId);
+            this.groupBox1.Controls.Add(this.txtVueltaMejorIndividuoId);
+            this.groupBox1.Controls.Add(this.txtGlobalPeorIndividuoId);
+            this.groupBox1.Controls.Add(this.txtGlobalMejorIndividuoId);
+            this.groupBox1.Controls.Add(this.label3);
+            this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Controls.Add(this.lblGlobalMejorIndividuoID);
             this.groupBox1.Controls.Add(this.txtNumeroGeneracion);
             this.groupBox1.Controls.Add(this.lblNumeroGeneracion);
             this.groupBox1.Controls.Add(this.lblVueltaPeorIndividuo);
@@ -225,7 +257,7 @@
             this.groupBox1.Controls.Add(this.lblGlobalMejorIndividuo);
             this.groupBox1.Location = new System.Drawing.Point(220, 13);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(412, 309);
+            this.groupBox1.Size = new System.Drawing.Size(948, 309);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Resultados";
@@ -348,11 +380,139 @@
             this.lblNumeroGeneracion.TabIndex = 10;
             this.lblNumeroGeneracion.Text = "Número de generación:";
             // 
+            // lblGlobalMejorIndividuoID
+            // 
+            this.lblGlobalMejorIndividuoID.AutoSize = true;
+            this.lblGlobalMejorIndividuoID.Location = new System.Drawing.Point(309, 47);
+            this.lblGlobalMejorIndividuoID.Name = "lblGlobalMejorIndividuoID";
+            this.lblGlobalMejorIndividuoID.Size = new System.Drawing.Size(67, 13);
+            this.lblGlobalMejorIndividuoID.TabIndex = 12;
+            this.lblGlobalMejorIndividuoID.Text = "Id. individuo:";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(309, 74);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(67, 13);
+            this.label1.TabIndex = 13;
+            this.label1.Text = "Id. individuo:";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(308, 128);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(67, 13);
+            this.label2.TabIndex = 14;
+            this.label2.Text = "Id. individuo:";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(308, 154);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(67, 13);
+            this.label3.TabIndex = 15;
+            this.label3.Text = "Id. individuo:";
+            // 
+            // txtGlobalMejorIndividuoId
+            // 
+            this.txtGlobalMejorIndividuoId.Location = new System.Drawing.Point(382, 43);
+            this.txtGlobalMejorIndividuoId.Name = "txtGlobalMejorIndividuoId";
+            this.txtGlobalMejorIndividuoId.Size = new System.Drawing.Size(240, 20);
+            this.txtGlobalMejorIndividuoId.TabIndex = 16;
+            // 
+            // txtGlobalPeorIndividuoId
+            // 
+            this.txtGlobalPeorIndividuoId.Location = new System.Drawing.Point(382, 70);
+            this.txtGlobalPeorIndividuoId.Name = "txtGlobalPeorIndividuoId";
+            this.txtGlobalPeorIndividuoId.Size = new System.Drawing.Size(240, 20);
+            this.txtGlobalPeorIndividuoId.TabIndex = 17;
+            // 
+            // txtVueltaMejorIndividuoId
+            // 
+            this.txtVueltaMejorIndividuoId.Location = new System.Drawing.Point(382, 125);
+            this.txtVueltaMejorIndividuoId.Name = "txtVueltaMejorIndividuoId";
+            this.txtVueltaMejorIndividuoId.Size = new System.Drawing.Size(240, 20);
+            this.txtVueltaMejorIndividuoId.TabIndex = 18;
+            // 
+            // txtVueltaPeorIndividuoId
+            // 
+            this.txtVueltaPeorIndividuoId.Location = new System.Drawing.Point(382, 151);
+            this.txtVueltaPeorIndividuoId.Name = "txtVueltaPeorIndividuoId";
+            this.txtVueltaPeorIndividuoId.Size = new System.Drawing.Size(240, 20);
+            this.txtVueltaPeorIndividuoId.TabIndex = 19;
+            // 
+            // txtVueltaPeorIndividuoGen
+            // 
+            this.txtVueltaPeorIndividuoGen.Location = new System.Drawing.Point(686, 151);
+            this.txtVueltaPeorIndividuoGen.Name = "txtVueltaPeorIndividuoGen";
+            this.txtVueltaPeorIndividuoGen.Size = new System.Drawing.Size(240, 20);
+            this.txtVueltaPeorIndividuoGen.TabIndex = 27;
+            // 
+            // txtVueltaMejorIndividuoGen
+            // 
+            this.txtVueltaMejorIndividuoGen.Location = new System.Drawing.Point(687, 125);
+            this.txtVueltaMejorIndividuoGen.Name = "txtVueltaMejorIndividuoGen";
+            this.txtVueltaMejorIndividuoGen.Size = new System.Drawing.Size(240, 20);
+            this.txtVueltaMejorIndividuoGen.TabIndex = 26;
+            // 
+            // txtGlobalPeorIndividuoGen
+            // 
+            this.txtGlobalPeorIndividuoGen.Location = new System.Drawing.Point(687, 71);
+            this.txtGlobalPeorIndividuoGen.Name = "txtGlobalPeorIndividuoGen";
+            this.txtGlobalPeorIndividuoGen.Size = new System.Drawing.Size(240, 20);
+            this.txtGlobalPeorIndividuoGen.TabIndex = 25;
+            // 
+            // txtGlobalMejorIndividuoGen
+            // 
+            this.txtGlobalMejorIndividuoGen.Location = new System.Drawing.Point(687, 44);
+            this.txtGlobalMejorIndividuoGen.Name = "txtGlobalMejorIndividuoGen";
+            this.txtGlobalMejorIndividuoGen.Size = new System.Drawing.Size(240, 20);
+            this.txtGlobalMejorIndividuoGen.TabIndex = 24;
+            // 
+            // lblVueltaPeorIndividuoGen
+            // 
+            this.lblVueltaPeorIndividuoGen.AutoSize = true;
+            this.lblVueltaPeorIndividuoGen.Location = new System.Drawing.Point(627, 154);
+            this.lblVueltaPeorIndividuoGen.Name = "lblVueltaPeorIndividuoGen";
+            this.lblVueltaPeorIndividuoGen.Size = new System.Drawing.Size(53, 13);
+            this.lblVueltaPeorIndividuoGen.TabIndex = 23;
+            this.lblVueltaPeorIndividuoGen.Text = "Genética:";
+            // 
+            // lblVueltaMejorIndividuoGen
+            // 
+            this.lblVueltaMejorIndividuoGen.AutoSize = true;
+            this.lblVueltaMejorIndividuoGen.Location = new System.Drawing.Point(627, 128);
+            this.lblVueltaMejorIndividuoGen.Name = "lblVueltaMejorIndividuoGen";
+            this.lblVueltaMejorIndividuoGen.Size = new System.Drawing.Size(53, 13);
+            this.lblVueltaMejorIndividuoGen.TabIndex = 22;
+            this.lblVueltaMejorIndividuoGen.Text = "Genética:";
+            // 
+            // lblGlobalPeorIndividuoGen
+            // 
+            this.lblGlobalPeorIndividuoGen.AutoSize = true;
+            this.lblGlobalPeorIndividuoGen.Location = new System.Drawing.Point(628, 74);
+            this.lblGlobalPeorIndividuoGen.Name = "lblGlobalPeorIndividuoGen";
+            this.lblGlobalPeorIndividuoGen.Size = new System.Drawing.Size(53, 13);
+            this.lblGlobalPeorIndividuoGen.TabIndex = 21;
+            this.lblGlobalPeorIndividuoGen.Text = "Genética:";
+            // 
+            // lblGlobalMejorIndividuoGen
+            // 
+            this.lblGlobalMejorIndividuoGen.AutoSize = true;
+            this.lblGlobalMejorIndividuoGen.Location = new System.Drawing.Point(628, 47);
+            this.lblGlobalMejorIndividuoGen.Name = "lblGlobalMejorIndividuoGen";
+            this.lblGlobalMejorIndividuoGen.Size = new System.Drawing.Size(53, 13);
+            this.lblGlobalMejorIndividuoGen.TabIndex = 20;
+            this.lblGlobalMejorIndividuoGen.Text = "Genética:";
+            // 
             // EjecutorAlgortimo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(644, 363);
+            this.ClientSize = new System.Drawing.Size(1173, 363);
             this.Controls.Add(this.lblTiempo);
             this.Controls.Add(this.nudTiempo);
             this.Controls.Add(this.groupBox1);
@@ -404,6 +564,22 @@
         private System.Windows.Forms.Label lblVueltaMejorIndividuo;
         private System.Windows.Forms.TextBox txtNumeroGeneracion;
         private System.Windows.Forms.Label lblNumeroGeneracion;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblGlobalMejorIndividuoID;
+        private System.Windows.Forms.TextBox txtVueltaPeorIndividuoId;
+        private System.Windows.Forms.TextBox txtVueltaMejorIndividuoId;
+        private System.Windows.Forms.TextBox txtGlobalPeorIndividuoId;
+        private System.Windows.Forms.TextBox txtGlobalMejorIndividuoId;
+        private System.Windows.Forms.TextBox txtVueltaPeorIndividuoGen;
+        private System.Windows.Forms.TextBox txtVueltaMejorIndividuoGen;
+        private System.Windows.Forms.TextBox txtGlobalPeorIndividuoGen;
+        private System.Windows.Forms.TextBox txtGlobalMejorIndividuoGen;
+        private System.Windows.Forms.Label lblVueltaPeorIndividuoGen;
+        private System.Windows.Forms.Label lblVueltaMejorIndividuoGen;
+        private System.Windows.Forms.Label lblGlobalPeorIndividuoGen;
+        private System.Windows.Forms.Label lblGlobalMejorIndividuoGen;
     }
 }
 

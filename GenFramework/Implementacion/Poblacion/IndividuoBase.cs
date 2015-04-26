@@ -11,13 +11,15 @@ namespace GenFramework.Implementacion.Poblacion
 {
     public class IndividuoBase : IIndividuo
     {
-        public ICromosoma Cromosoma { get; set; }
-        public Type Genotipo { get; set; }
+        public ICromosoma Cromosoma { get; protected set; }
+        public Type Genotipo { get; protected set; }
+        public Guid IdentificacionUnica { get; protected set; }
 
         public IndividuoBase(int cantidadGenes)
         {
             this.Cromosoma = new Cromosoma(cantidadGenes);
             this.Genotipo = typeof(IndividuoBase);
+            this.IdentificacionUnica = Guid.NewGuid();
         }
 
         public IIndividuo GenerarDescendencia(IIndividuo individuo)
@@ -26,6 +28,11 @@ namespace GenFramework.Implementacion.Poblacion
             descendiente.Genotipo = individuo.Genotipo;
 
             return descendiente;
+        }
+
+        public override string ToString()
+        {
+            return this.Cromosoma.ToString();
         }
     }
 }

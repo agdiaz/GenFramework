@@ -42,6 +42,7 @@
     <Compile Include="Eventos\PoblacionEventArgs.cs" />
     <Compile Include="Implementacion\AlgoritmoGenetico.cs" />
     <Compile Include="Implementacion\Genetica\Cromosoma.cs" />
+    <Compile Include="Implementacion\Genetica\GenBase.cs" />
     <Compile Include="Implementacion\OperadorAnalisisPoblacion\OperadorAnalisisPoblacion.cs" />
     <Compile Include="Implementacion\OperadorCorte\OperadorCorteSimple.cs" />
     <Compile Include="Implementacion\OperadorCruzamiento\OperadorCruzamientoSimple.cs" />
@@ -51,6 +52,7 @@
     <Compile Include="Implementacion\Parametros\ParametrosAnalisisPoblacion.cs" />
     <Compile Include="Implementacion\Parametros\ParametrosCorte.cs" />
     <Compile Include="Implementacion\Parametros\ParametrosCruzamiento.cs" />
+    <Compile Include="Implementacion\Parametros\ParametrosMutacion.cs" />
     <Compile Include="Implementacion\Parametros\ParametrosSeleccion.cs" />
     <Compile Include="Interfaces\OperadorAnalisisPoblacion\IOperadorAnalisisPoblacion.cs" />
     <Compile Include="Interfaces\Parametros\IParametrosAnalisisPoblacion.cs" />
@@ -62,6 +64,7 @@
     <Compile Include="Interfaces\Genetica\IGen.cs" />
     <Compile Include="Interfaces\IAlgoritmoGenetico.cs" />
     <Compile Include="Interfaces\Genetica\IFuncionFitness.cs" />
+    <Compile Include="Interfaces\Parametros\IParametrosMutacion.cs" />
     <Compile Include="Interfaces\Poblacion\IIndividuo.cs" />
     <Compile Include="Interfaces\OperadorCorte\IOperadorCorte.cs" />
     <Compile Include="Interfaces\OperadorCruzamiento\IOperadorCruzamiento.cs" />

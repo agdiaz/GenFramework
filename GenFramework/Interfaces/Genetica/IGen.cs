@@ -6,8 +6,11 @@ using System.Threading.Tasks;
 
 namespace GenFramework.Interfaces.Genetica
 {
-    public interface IGen
+    public interface IGen : ICloneable
     {
-        IComparable Valor { get; }
+        string Nombre { get; }
+        decimal Valor { get; }
+
+        void Mutar(int indiceMutacion);
     }
 }

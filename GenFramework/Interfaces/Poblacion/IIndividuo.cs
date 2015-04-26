@@ -10,6 +10,7 @@ namespace GenFramework.Interfaces.Poblacion
     {
         ICromosoma Cromosoma { get; }
         Type Genotipo { get;}
+        Guid IdentificacionUnica { get; }
 
         IIndividuo GenerarDescendencia(IIndividuo individuo);
     }

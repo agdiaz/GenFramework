@@ -47,21 +47,17 @@ namespace GenFramework.Interfaz
             };
         }
 
-        void _backgroundWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
-        {
-            MessageBox.Show("Fin de la ejecución");
-        }
+        
         #endregion
 
         #region Eventos de los controles
-        
-
         private void btnEjecutar_Click(object sender, EventArgs e)
         {
+            this.btnEjecutar.Enabled = false;
             this._backgroundWorker.RunWorkerAsync();
         }
 
-        void _backgroundWorker_DoWork(object sender, DoWorkEventArgs e)
+        private void _backgroundWorker_DoWork(object sender, DoWorkEventArgs e)
         {
             var poblacionInicial = this.GenerarPoblacion();
 
@@ -70,9 +66,9 @@ namespace GenFramework.Interfaz
 
             IAlgoritmoGenetico algoritmo = new AlgoritmoGenetico(poblacionInicial,
                 new OperadorSeleccionPorTorneo(new ParametrosSeleccion() { CantidadIndividuosASeleccionar = poblacionInicial.PoblacionActual.Count, FuncionFitness = funcionFitness }),
-                new OperadorCruzamientoSimple(new ParametrosCruzamiento() { IndiceCorte = 2 }),
-                new OperadorMutacionConstante(),
-                new OperadorCorteSimple(new ParametrosCorte() { FuncionFitness = funcionFitness, UmbralCorte = 3, LimiteIteraciones = (int)nudLimiteVueltas.Value }));
+                new OperadorCruzamientoSimple(new ParametrosCruzamiento() { IndiceCorte = 1 }),
+                new OperadorMutacionConstante(new ParametrosMutacion() { IndiceMutacion = 5, ProbabilidadMutarPoblacion = 50}),
+                new OperadorCorteSimple(new ParametrosCorte() { FuncionFitness = funcionFitness, UmbralCorte = (int)nudAltura.Value, LimiteIteraciones = (int)nudLimiteVueltas.Value }));
 
             IParametros parametros = new Parametros()
             {
@@ -85,18 +81,23 @@ namespace GenFramework.Interfaz
             this.AnalizarPoblacion(poblacionFinal);
         }
 
+        private void _backgroundWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            MessageBox.Show("Fin de la ejecución");
+            this.btnEjecutar.Enabled = true;
+        }
         private IPoblacion GenerarPoblacion()
         {
-            var columna1 = new IndividuoColumna(20, 30, 100);
-            var columna2 = new IndividuoColumna(100, 2, 20);
-            var columna3 = new IndividuoColumna(15, 54, 15);
-            var columna4 = new IndividuoColumna(150, 10, 400);
-            var columna5 = new IndividuoColumna(250, 98, 124);
-            var columna6 = new IndividuoColumna(200, 9, 564);
-            var columna7 = new IndividuoColumna(15, 9, 424);
-            var columna8 = new IndividuoColumna(10, 9, 124);
-            var columna9 = new IndividuoColumna(65, 9, 4);
-            var columna10 = new IndividuoColumna(100, 10, 40);
+            var columna1 = new IndividuoColumna(100, 30, 10);
+            var columna2 = new IndividuoColumna(100, 30, 20);
+            var columna3 = new IndividuoColumna(100, 30, 30);
+            var columna4 = new IndividuoColumna(100, 30, 40);
+            var columna5 = new IndividuoColumna(100, 30, 50);
+            var columna6 = new IndividuoColumna(100, 30, 60);
+            var columna7 = new IndividuoColumna(100, 30, 70);
+            var columna8 = new IndividuoColumna(100, 30, 80);
+            var columna9 = new IndividuoColumna(100, 30, 90);
+            var columna10 = new IndividuoColumna(100, 30, 100);
 
             var poblacionInicial = new Poblacion();
             poblacionInicial.PoblacionActual.Add(columna1);
@@ -113,7 +114,14 @@ namespace GenFramework.Interfaz
             return poblacionInicial;
         }
 
-        void algoritmo_IteracionTerminada(object sender, PoblacionEventArgs e)
+        private void nudTiempo_ValueChanged(object sender, EventArgs e)
+        {
+            this._intervaloTimer = Convert.ToInt32(nudTiempo.Value) * 1000;
+        }
+        #endregion
+
+        #region Eventos del AlgoritmoGenetico
+        private void algoritmo_IteracionTerminada(object sender, PoblacionEventArgs e)
         {
             AnalizarPoblacion(e.PoblacionResultante);
         }
@@ -126,18 +134,27 @@ namespace GenFramework.Interfaz
                 this.txtNumeroGeneracion.Text = poblacionResultante.NumeroGeneracion.ToString();
 
                 this.txtGlobalMejorIndividuo.Text = analisis.MejorFitnessGlobal.ToString();
+                this.txtGlobalMejorIndividuoId.Text = analisis.MejorIndividuoGlobal.IdentificacionUnica.ToString();
+                this.txtGlobalMejorIndividuoGen.Text = analisis.MejorIndividuoGlobal.ToString();
+
+
                 this.txtGlobalPeorIndividuo.Text = analisis.PeorFitnessGlobal.ToString();
+                this.txtGlobalPeorIndividuoId.Text = analisis.PeorIndividuoGlobal.IdentificacionUnica.ToString();
+                this.txtGlobalPeorIndividuoGen.Text = analisis.MejorIndividuoGlobal.ToString();
+
 
                 this.txtVueltaMejorIndividuo.Text = analisis.MejorFitnessVuelta.ToString();
+                this.txtVueltaMejorIndividuoId.Text = analisis.MejorIndividuoVuelta.IdentificacionUnica.ToString();
+                this.txtVueltaMejorIndividuoGen.Text = analisis.MejorIndividuoGlobal.ToString();
+
                 this.txtVueltaPeorIndividuo.Text = analisis.PeorFitnessVuelta.ToString();
+                this.txtVueltaPeorIndividuoId.Text = analisis.PeorIndividuoVuelta.IdentificacionUnica.ToString();
+                this.txtVueltaPeorIndividuoGen.Text = analisis.MejorIndividuoGlobal.ToString();
+
 
             }), null);
         }
 
-        private void nudTiempo_ValueChanged(object sender, EventArgs e)
-        {
-            this._intervaloTimer = Convert.ToInt32(nudTiempo.Value) * 1000;
-        }
         #endregion
     }
 }
