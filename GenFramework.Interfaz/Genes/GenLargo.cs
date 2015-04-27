@@ -15,5 +15,17 @@ namespace GenFramework.Interfaz.Genetica
             this.Valor = largo;
             this.Nombre = "Largo";
         }
+
+        public override void Mutar(int indiceMutacion)
+        {
+        }
+
+        public override IGen Clonar()
+        {
+            return new GenLargo((decimal)this.Valor)
+            {
+                Nombre = this.Nombre
+            };
+        }
     }
 }

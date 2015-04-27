@@ -15,5 +15,19 @@ namespace GenFramework.Interfaz.Genetica
             this.Valor = peso;
             this.Nombre = "Peso";
         }
+
+        public override void Mutar(int indiceMutacion)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override IGen Clonar()
+        {
+            return new GenPeso((decimal)this.Valor)
+            {
+                Valor = this.Valor,
+                Nombre = this.Nombre,
+            };
+        }
     }
 }

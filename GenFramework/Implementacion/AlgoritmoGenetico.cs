@@ -52,8 +52,9 @@ namespace GenFramework.Implementacion
                 this._poblacion = this._operadorCruzamiento.Cruzar(this._poblacion);
                 this._poblacion = this._operadorMutacion.Mutar(this._poblacion);
 
-                IteracionTerminada(this, new PoblacionEventArgs(_poblacion));
-
+                // Lanzo el evento si alguien lo está escuchando:
+                if (IteracionTerminada != null)
+                    IteracionTerminada(this, new PoblacionEventArgs(_poblacion));
 
                 // Esperar para la siguiente vuelta
                 Thread.Sleep(parametros.IntervaloPorVuelta);

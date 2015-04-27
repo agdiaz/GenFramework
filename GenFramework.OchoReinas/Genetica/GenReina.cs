@@ -1,27 +1,21 @@
 ﻿using GenFramework.Implementacion.Genetica;
-using GenFramework.Interfaces.Genetica;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GenFramework.Interfaz.Genetica
+namespace GenFramework.OchoReinas.Genetica
 {
-    public class GenAlto : GenBase
+    public class GenReina : GenBase
     {
-        public GenAlto(decimal alto)
-        {
-            this.Valor = alto;
-            this.Nombre = "Alto";
-        }
 
         public override void Mutar(int indiceMutacion)
         {
             throw new NotImplementedException();
         }
 
-        public override IGen Clonar()
+        public override Interfaces.Genetica.IGen Clonar()
         {
             throw new NotImplementedException();
         }

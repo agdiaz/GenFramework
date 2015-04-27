@@ -100,6 +100,7 @@ namespace GenFramework.Test.Interfaces
 
             this._individuos = new List<IIndividuo>() { this._individuo1, this._individuo2, this._individuo3, this._individuo4 };
             this._poblacion = new Poblacion(_individuos);
+            this._poblacion.CantidadIndividuos = 4;
         }
 
 
@@ -111,9 +112,6 @@ namespace GenFramework.Test.Interfaces
             var poblacionFinal = operador.Cruzar(this._poblacion);
 
             Assert.AreEqual(_individuos.Count, poblacionFinal.PoblacionActual.Count);
-            Assert.IsNotNull(poblacionFinal.PoblacionActual[0].Cromosoma.Genes.GetValue(0));
-            Assert.IsNotNull(poblacionFinal.PoblacionActual[0].Cromosoma.Genes.GetValue(1));
-            Assert.IsNotNull(poblacionFinal.PoblacionActual[0].Cromosoma.Genes.GetValue(2));
         }
     }
 }

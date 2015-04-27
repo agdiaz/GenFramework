@@ -23,7 +23,7 @@ namespace GenFramework.Interfaz.FuncionFitness
                 var largo =((IGen)columna.Cromosoma.Genes.GetValue(1)).Valor;
                 var peso = ((IGen)columna.Cromosoma.Genes.GetValue(2)).Valor;
 
-                var salto = (alto + (largo/(largo + alto))) * (1 / peso);
+                var salto = ((decimal)alto + ((decimal)largo / ((decimal)largo + (decimal)alto))) * (1 / (decimal)peso);
                 
                 return salto;
             }

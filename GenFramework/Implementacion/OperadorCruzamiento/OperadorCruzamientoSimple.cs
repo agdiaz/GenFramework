@@ -28,7 +28,7 @@ namespace GenFramework.Implementacion.OperadorCruzamiento
             var poblacionFinal = new Poblacion.Poblacion(poblacionSeleccionada.NumeroGeneracion, individuos);
             poblacionFinal.CantidadIndividuos = poblacionSeleccionada.CantidadIndividuos;
 
-            for (int cantidadIndividuos = 0; cantidadIndividuos < poblacionSeleccionada.CantidadIndividuos; cantidadIndividuos++)
+            for (int cantidadIndividuos = 0; cantidadIndividuos < poblacionSeleccionada.CantidadIndividuos; cantidadIndividuos+=2)
             {
                 var individuo1 = poblacionSeleccionada.ObtenerIndividuo();
                 var individuo2 = poblacionSeleccionada.ObtenerIndividuo();
@@ -50,19 +50,19 @@ namespace GenFramework.Implementacion.OperadorCruzamiento
             for (int indiceGen = 0; indiceGen <= _parametrosCruzamientoSimple.IndiceCorte; indiceGen++)
             {
                 var genPadre = individuo1.Cromosoma.Genes.GetValue(indiceGen) as IGen;
-                hijo1.Cromosoma.Genes.SetValue(genPadre.Clone(), indiceGen);
+                hijo1.Cromosoma.Genes.SetValue(genPadre.Clonar(), indiceGen);
 
                 var genMadre = individuo2.Cromosoma.Genes.GetValue(indiceGen) as IGen;
-                hijo2.Cromosoma.Genes.SetValue(genMadre.Clone(), indiceGen);
+                hijo2.Cromosoma.Genes.SetValue(genMadre.Clonar(), indiceGen);
             }
 
             for (int indiceGen = _parametrosCruzamientoSimple.IndiceCorte + 1; indiceGen < individuo1.Cromosoma.CantidadGenes; indiceGen++)
             {
                 var genMadre = individuo2.Cromosoma.Genes.GetValue(indiceGen) as IGen;
-                hijo1.Cromosoma.Genes.SetValue(genMadre.Clone(), indiceGen);
+                hijo1.Cromosoma.Genes.SetValue(genMadre.Clonar(), indiceGen);
 
                 var genPadre = individuo1.Cromosoma.Genes.GetValue(indiceGen) as IGen;
-                hijo2.Cromosoma.Genes.SetValue(genPadre.Clone(), indiceGen);
+                hijo2.Cromosoma.Genes.SetValue(genPadre.Clonar(), indiceGen);
             }
 
             return new Tuple<IIndividuo, IIndividuo>(hijo1, hijo2);
