@@ -60,9 +60,14 @@
     <Compile Include="Interfaces\OperadorCruzamientoTest.cs" />
     <Compile Include="Interfaces\IndividuoTest.cs" />
     <Compile Include="Interfaces\ParametrosTest.cs" />
+    <Compile Include="OchoReinas\PosicionTableroTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\GenFramework.OchoReinas\GenFramework.OchoReinas.csproj">
+      <Project>{b40b64af-e4d5-4648-a362-2fa6b6a440b4}</Project>
+      <Name>GenFramework.OchoReinas</Name>
+    </ProjectReference>
     <ProjectReference Include="..\GenFramework\GenFramework.Core.csproj">
       <Project>{f89a416e-6d9c-4c06-a153-cd587160e977}</Project>
       <Name>GenFramework.Core</Name>

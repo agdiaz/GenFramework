@@ -50,7 +50,10 @@
     <Compile Include="EjecutorAlgoritmo.Designer.cs">
       <DependentUpon>EjecutorAlgoritmo.cs</DependentUpon>
     </Compile>
+    <Compile Include="Fitness\AnalizadorTablero.cs" />
+    <Compile Include="Fitness\TableroFitness.cs" />
     <Compile Include="Genetica\GenReina.cs" />
+    <Compile Include="Genetica\IndividuoTablero.cs" />
     <Compile Include="Genetica\PosicionTablero.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
