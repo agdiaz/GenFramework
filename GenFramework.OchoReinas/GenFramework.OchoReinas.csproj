@@ -51,6 +51,7 @@
       <DependentUpon>EjecutorAlgoritmo.cs</DependentUpon>
     </Compile>
     <Compile Include="Genetica\GenReina.cs" />
+    <Compile Include="Genetica\PosicionTablero.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="EjecutorAlgoritmo.resx">
