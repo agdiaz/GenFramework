@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GenFramework.Core", "GenFra
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GenFramework.Test", "GenFramework.Test\GenFramework.Test.csproj", "{CF17D440-5A89-44C9-964B-56F70544F1D4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GenFramework.Interfaz", "GenFramework.Interfaz\GenFramework.Interfaz.csproj", "{63C8EB77-24A4-4184-8A37-B487C8671CEF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GenFramework.InterfazSaltadores", "GenFramework.Interfaz\GenFramework.InterfazSaltadores.csproj", "{63C8EB77-24A4-4184-8A37-B487C8671CEF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
