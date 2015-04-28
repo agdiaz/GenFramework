@@ -50,11 +50,12 @@
     <Compile Include="EjecutorAlgoritmo.Designer.cs">
       <DependentUpon>EjecutorAlgoritmo.cs</DependentUpon>
     </Compile>
-    <Compile Include="Fitness\AnalizadorTablero.cs" />
     <Compile Include="Fitness\TableroFitness.cs" />
     <Compile Include="Genetica\GenReina.cs" />
     <Compile Include="Genetica\IndividuoTablero.cs" />
-    <Compile Include="Genetica\PosicionTablero.cs" />
+    <Compile Include="LogicaNegocio\Posicion.cs" />
+    <Compile Include="LogicaNegocio\Reina.cs" />
+    <Compile Include="LogicaNegocio\Tablero.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="EjecutorAlgoritmo.resx">
@@ -88,6 +89,7 @@
       <Name>GenFramework.Core</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

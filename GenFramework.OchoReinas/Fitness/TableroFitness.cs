@@ -1,6 +1,7 @@
 ﻿using GenFramework.Interfaces.Genetica;
 using GenFramework.Interfaces.Poblacion;
 using GenFramework.OchoReinas.Genetica;
+using GenFramework.OchoReinas.LogicaNegocio;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,19 +27,18 @@ namespace GenFramework.OchoReinas.Fitness
         private decimal AnalizarReinas(ICromosoma cromosoma)
         {
             decimal reinaVivas = 0;
-            
-            var reina1 = cromosoma.Genes.GetValue(0) as GenReina;
-            var reina2 = cromosoma.Genes.GetValue(1) as GenReina;
-            var reina3 = cromosoma.Genes.GetValue(2) as GenReina;
-            var reina4 = cromosoma.Genes.GetValue(3) as GenReina;
-            var reina5 = cromosoma.Genes.GetValue(4) as GenReina;
-            var reina6 = cromosoma.Genes.GetValue(5) as GenReina;
-            var reina7 = cromosoma.Genes.GetValue(6) as GenReina;
-            var reina8 = cromosoma.Genes.GetValue(7) as GenReina;
 
-            AnalizadorTablero analizador = new AnalizadorTablero(
-                (PosicionTablero)reina1.Valor, (PosicionTablero)reina2.Valor, (PosicionTablero)reina3.Valor, (PosicionTablero)reina4.Valor,
-                (PosicionTablero)reina5.Valor, (PosicionTablero)reina6.Valor, (PosicionTablero)reina7.Valor, (PosicionTablero)reina8.Valor);
+            Tablero tablero = new Tablero();
+            for (int indiceReina = 0; indiceReina < cromosoma.Genes.Length; indiceReina++)
+            {
+                var genReina = cromosoma.Genes.GetValue(indiceReina) as GenReina;
+                var reina = genReina.Valor as Reina;
+                
+                tablero.AgregarReina(reina);
+            }
+
+
+            reinaVivas = tablero.CalcularReinasVivas().Count;
 
             return reinaVivas;
         }
