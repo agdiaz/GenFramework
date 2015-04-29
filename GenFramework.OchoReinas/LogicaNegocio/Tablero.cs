@@ -46,11 +46,14 @@ namespace GenFramework.OchoReinas.LogicaNegocio
                     {
                         this.posiciones[i][j].AgregarReina(reina.NumeroReina);
                     }
-
-                    if (reina.Posicion.X - i == reina.Posicion.Y - j)
+                    else if (Math.Abs(reina.Posicion.X - i) == Math.Abs(reina.Posicion.Y - j))
                     {
                         this.posiciones[i][j].AgregarReina(reina.NumeroReina);
                     }
+                    //else if (Math.Abs(reina.Posicion.X + i) == Math.Abs(reina.Posicion.Y + j))
+                    //{
+                    //    this.posiciones[i][j].AgregarReina(reina.NumeroReina);
+                    //}
                 }
             }
 
@@ -70,6 +73,22 @@ namespace GenFramework.OchoReinas.LogicaNegocio
             }
             
             return reinasVivas;
+        }
+
+        public override string ToString()
+        {
+            StringBuilder sb = new StringBuilder();
+            for (int i = 0; i < 8; i++)
+            {
+                string fila = string.Empty;
+                for (int j = 0; j < 8; j++)
+                {
+                    fila += string.Format("{0}\t", posiciones[i][j].ToString());
+                }
+                sb.AppendLine(fila);
+            }
+
+            return sb.ToString();
         }
     }
 }

@@ -35,8 +35,8 @@ namespace GenFramework.OchoReinas.LogicaNegocio
 
         public override string ToString()
         {
-            var reinas = string.Join(",", Reina.Select(r => r.ToString()).ToArray());
-            return string.Format("({0},{1}): Reinas {2}", X, Y, reinas);
+            var reinas = string.Join(string.Empty, Reina.OrderBy(r => r).Select(r => r.ToString()).ToArray());
+            return string.IsNullOrEmpty(reinas) ? "-" : reinas;
         }
     }
 }
