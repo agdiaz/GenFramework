@@ -31,5 +31,12 @@ namespace GenFramework.OchoReinas.LogicaNegocio
                 Reina.Add(numero);
             }
         }
+
+
+        public override string ToString()
+        {
+            var reinas = string.Join(",", Reina.Select(r => r.ToString()).ToArray());
+            return string.Format("({0},{1}): Reinas {2}", X, Y, reinas);
+        }
     }
 }

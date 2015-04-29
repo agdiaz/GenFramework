@@ -62,8 +62,11 @@ namespace GenFramework.OchoReinas.LogicaNegocio
             var reinasVivas = new List<Reina>();
             foreach (var reina in reinas)
             {
-                if (posiciones[reina.Posicion.X][reina.Posicion.Y].Reina.Count == 1 && posiciones[reina.Posicion.X][reina.Posicion.Y].Reina[0] == reina.NumeroReina)
+                if (posiciones[reina.Posicion.X][reina.Posicion.Y].Reina.Count == 1 &&
+                    posiciones[reina.Posicion.X][reina.Posicion.Y].Reina[0] == reina.NumeroReina)
+                {
                     reinasVivas.Add(reina);
+                }
             }
             
             return reinasVivas;

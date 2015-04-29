@@ -230,7 +230,7 @@
             // 
             this.nudCantidadPoblacion.Location = new System.Drawing.Point(181, 27);
             this.nudCantidadPoblacion.Maximum = new decimal(new int[] {
-            1000,
+            10000,
             0,
             0,
             0});
@@ -252,7 +252,7 @@
             // 
             this.nudCantidadSeleccionada.Location = new System.Drawing.Point(181, 50);
             this.nudCantidadSeleccionada.Maximum = new decimal(new int[] {
-            1000,
+            10000,
             0,
             0,
             0});

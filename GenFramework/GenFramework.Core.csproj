@@ -48,6 +48,7 @@
     <Compile Include="Implementacion\OperadorCruzamiento\OperadorCruzamientoSimple.cs" />
     <Compile Include="Implementacion\OperadorMutacion\OperadorMutacionConstante.cs" />
     <Compile Include="Implementacion\OperadorSeleccion\OperadorSeleccionPorTorneo.cs" />
+    <Compile Include="Implementacion\OperadorSeleccion\OperadorSeleccionRanking.cs" />
     <Compile Include="Implementacion\Parametros\Parametros.cs" />
     <Compile Include="Implementacion\Parametros\ParametrosAnalisisPoblacion.cs" />
     <Compile Include="Implementacion\Parametros\ParametrosCorte.cs" />

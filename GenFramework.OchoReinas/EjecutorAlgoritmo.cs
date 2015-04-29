@@ -66,14 +66,14 @@ namespace GenFramework.OchoReinas
             var analisis = new OperadorAnalisisPoblacion(new ParametrosAnalisisPoblacion() { Funcion = funcionFitness });
 
             IAlgoritmoGenetico algoritmo = new AlgoritmoGenetico(poblacionInicial,
-                new OperadorSeleccionPorTorneo(new ParametrosSeleccion() { CantidadIndividuosASeleccionar = (int)nudCantidadSeleccionada.Value, FuncionFitness = funcionFitness }),
+                new OperadorSeleccionRanking(new ParametrosSeleccion() { CantidadIndividuosASeleccionar = (int)nudCantidadSeleccionada.Value, FuncionFitness = funcionFitness }),
                 new OperadorCruzamientoSimple(new ParametrosCruzamiento() { IndiceCorte = (int)nudCruzar.Value }),
                 new OperadorMutacionConstante(new ParametrosMutacion() { IndiceMutacion = 1, ProbabilidadMutarPoblacion = 50 }),
                 new OperadorCorteSimple(new ParametrosCorte() { FuncionFitness = funcionFitness, UmbralCorte = 8, LimiteIteraciones = (int)nudLimiteVueltas.Value }));
 
             IParametros parametros = new Parametros()
             {
-                IntervaloPorVuelta = 500,
+                IntervaloPorVuelta = 1,
             };
 
             algoritmo.IteracionTerminada += algoritmo_IteracionTerminada;

@@ -16,6 +16,11 @@ namespace GenFramework.OchoReinas.LogicaNegocio
             this.NumeroReina = reina;
         }
 
+        public override string ToString()
+        {
+            return string.Format("Reina {0} ({1},{2})", NumeroReina, Posicion.X, Posicion.Y);
+        }
+
 
     }
 }
