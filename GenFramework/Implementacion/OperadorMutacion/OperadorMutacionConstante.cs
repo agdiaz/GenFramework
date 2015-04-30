@@ -13,15 +13,17 @@ namespace GenFramework.Implementacion.OperadorMutacion
     public class OperadorMutacionConstante : IOperadorMutacion
     {
         private IParametrosMutacion _parametrosMutacion;
+        private Random _generador;
 
         public OperadorMutacionConstante(IParametrosMutacion parametrosMutacion)
         {
             this._parametrosMutacion = parametrosMutacion;
+            _generador = new Random();
         }
 
         public IPoblacion Mutar(IPoblacion poblacionCruzada)
         {
-            var probabilidad = new Random((int)DateTime.Now.Ticks).Next(0, 100);
+            var probabilidad = _generador.Next(0, 100);
             
             if (probabilidad  >= _parametrosMutacion.ProbabilidadMutarPoblacion)
             {

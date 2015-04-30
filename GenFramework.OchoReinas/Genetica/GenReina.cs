@@ -22,6 +22,22 @@ namespace GenFramework.OchoReinas.Genetica
 
         public override void Mutar(int indiceMutacion)
         {
+            var probabilidad = new Random().Next(0, 100);
+
+            if (probabilidad <= 50)
+            {
+                var x = reina.Posicion.X;
+                var nuevaX = (x + indiceMutacion) % 8;
+
+                this.reina.Posicion.X = nuevaX;
+            }
+            else
+            {
+                var y = reina.Posicion.Y;
+                var nuevaY = (y + indiceMutacion) % 8;
+
+                this.reina.Posicion.Y = nuevaY;
+            }
         }
 
         public override IGen Clonar()
