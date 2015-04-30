@@ -8,9 +8,15 @@ using GenFramework.Implementacion.OperadorSeleccion;
 using GenFramework.Implementacion.Parametros;
 using GenFramework.Implementacion.Poblacion;
 using GenFramework.Interfaces;
+using GenFramework.Interfaces.Genetica;
 using GenFramework.Interfaces.OperadorAnalisisPoblacion;
+using GenFramework.Interfaces.OperadorCorte;
+using GenFramework.Interfaces.OperadorCruzamiento;
+using GenFramework.Interfaces.OperadorMutacion;
+using GenFramework.Interfaces.OperadorSeleccion;
 using GenFramework.Interfaces.Parametros;
 using GenFramework.Interfaces.Poblacion;
+using GenFramework.OchoReinas.Fitness;
 using GenFramework.OchoReinas.Genetica;
 using GenFramework.OchoReinas.LogicaNegocio;
 using System;
@@ -56,24 +62,69 @@ namespace GenFramework.OchoReinas
 
         private void _backgroundWorker_DoWork(object sender, DoWorkEventArgs e)
         {
-            var poblacionInicial = new Poblacion(this.GenerarPoblacionInicial());
+            IPoblacion poblacionInicial = null;
+            poblacionInicial = new Poblacion(this.GenerarPoblacionInicial());
             poblacionInicial.CantidadIndividuos = (int)nudCantidadPoblacion.Value;
-            var funcionFitness = new Fitness.TableroFitness();
+
+            IFuncionFitness funcionFitness = null;
+            if (rdbFitnessCasillerosAmenazados.Checked)
+                funcionFitness = new SumatoriaAmenazasFitness();
+            if (rdbFitnessCasillerosLibres.Checked)
+                funcionFitness = new CasillerosSinAmenzasFitness();
+            if (rdbFitnessReinasVivas.Checked)
+                funcionFitness = new TableroFitness();
+
+
+            IOperadorSeleccion operadorSeleccion = null;
+            var parametrosOperadorSeleccion = new ParametrosSeleccion() 
+            { 
+                CantidadIndividuosASeleccionar = (int)nudCantidadSeleccionada.Value, 
+                FuncionFitness = funcionFitness 
+            };
+            if (rdbSeleccionTorneo.Checked)
+                operadorSeleccion = new OperadorSeleccionPorTorneo(parametrosOperadorSeleccion);
+            if (rdbSeleccionRanking.Checked)
+                operadorSeleccion = new OperadorSeleccionRanking(parametrosOperadorSeleccion);
+            
+            IOperadorCruzamiento operadorCruzamiento = null;
+            var parametrosOperadorCruzamiento = new ParametrosCruzamiento()
+            {
+                Mascara = txtMascara.Text,
+            };
+            if (rdbCruzarAzar.Checked)
+                operadorCruzamiento = new OperadorCruzamientoAzar(parametrosOperadorCruzamiento);
+            if (rdbMascara.Checked)
+                operadorCruzamiento = new OperadorCruzamientoMascara(parametrosOperadorCruzamiento);
+
+            IOperadorMutacion operadorMutacion = null;
+            var parametrosMutacion = new ParametrosMutacion()
+            {
+                ProbabilidadMutarPoblacion = (int)nudProbabilidadMutacion.Value,
+                IndiceMutacion = (int)nudIndiceMutacion.Value,
+            };
+            operadorMutacion = new OperadorMutacionConstante(parametrosMutacion);
+
+            IOperadorCorte operadorCorte = null;
+            var parametrosCorte = new ParametrosCorte()
+            {
+                FuncionFitness = funcionFitness,
+                UmbralCorte = (int)nudUmbralCorte.Value,
+                LimiteIteraciones = (int)nudLimiteVueltas.Value
+            };
+            operadorCorte = new OperadorCorteSimple(parametrosCorte);
+
 
             this.analisis = new OperadorAnalisisPoblacion(new ParametrosAnalisisPoblacion() { Funcion = funcionFitness });
             
-
-            var analisis = new OperadorAnalisisPoblacion(new ParametrosAnalisisPoblacion() { Funcion = funcionFitness });
-
-            IAlgoritmoGenetico algoritmo = new AlgoritmoGenetico(poblacionInicial,
-                new OperadorSeleccionRanking(new ParametrosSeleccion() { CantidadIndividuosASeleccionar = (int)nudCantidadSeleccionada.Value, FuncionFitness = funcionFitness }),
-                new OperadorCruzamientoSimple(new ParametrosCruzamiento() { IndiceCorte = (int)nudCruzar.Value }),
-                new OperadorMutacionConstante(new ParametrosMutacion() { IndiceMutacion = 1, ProbabilidadMutarPoblacion = 50 }),
-                new OperadorCorteSimple(new ParametrosCorte() { FuncionFitness = funcionFitness, UmbralCorte = 8, LimiteIteraciones = (int)nudLimiteVueltas.Value }));
+            IAlgoritmoGenetico algoritmo = new AlgoritmoGenetico(poblacionInicial, 
+                operadorSeleccion,
+                operadorCruzamiento,
+                operadorMutacion,
+                operadorCorte);
 
             IParametros parametros = new Parametros()
             {
-                IntervaloPorVuelta = 1,
+                IntervaloPorVuelta = (int)nudIntervaloVuelta.Value,
             };
 
             algoritmo.IteracionTerminada += algoritmo_IteracionTerminada;
@@ -151,28 +202,6 @@ namespace GenFramework.OchoReinas
                         controlReina.BackColor = Color.Orange;
                     }
                 }
-
-                //this.txtNumeroGeneracion.Text = poblacionResultante.NumeroGeneracion.ToString();
-
-                //this.txtGlobalMejorIndividuo.Text = analisis.MejorFitnessGlobal.ToString();
-                //this.txtGlobalMejorIndividuoId.Text = analisis.MejorIndividuoGlobal.IdentificacionUnica.ToString();
-                //this.txtGlobalMejorIndividuoGen.Text = analisis.MejorIndividuoGlobal.ToString();
-
-
-                //this.txtGlobalPeorIndividuo.Text = analisis.PeorFitnessGlobal.ToString();
-                //this.txtGlobalPeorIndividuoId.Text = analisis.PeorIndividuoGlobal.IdentificacionUnica.ToString();
-                //this.txtGlobalPeorIndividuoGen.Text = analisis.PeorIndividuoGlobal.ToString();
-
-
-                //this.txtVueltaMejorIndividuo.Text = analisis.MejorFitnessVuelta.ToString();
-                //this.txtVueltaMejorIndividuoId.Text = analisis.MejorIndividuoVuelta.IdentificacionUnica.ToString();
-                //this.txtVueltaMejorIndividuoGen.Text = analisis.MejorIndividuoVuelta.ToString();
-
-                //this.txtVueltaPeorIndividuo.Text = analisis.PeorFitnessVuelta.ToString();
-                //this.txtVueltaPeorIndividuoId.Text = analisis.PeorIndividuoVuelta.IdentificacionUnica.ToString();
-                //this.txtVueltaPeorIndividuoGen.Text = analisis.PeorIndividuoVuelta.ToString();
-
-
             }), null);
         }
 

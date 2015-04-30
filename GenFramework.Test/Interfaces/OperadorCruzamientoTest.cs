@@ -37,7 +37,7 @@ namespace GenFramework.Test.Interfaces
             this.CargarPoblacionInicial();
 
             _parametrosCruzamientoSimple = MockRepository.GenerateMock<IParametrosCruzamiento>();
-            _parametrosCruzamientoSimple.Expect(e => e.IndiceCorte).Return(1);
+            _parametrosCruzamientoSimple.Expect(e => e.Mascara).Return("PPPPMMMM");
         }
 
         private void CargarPoblacionInicial()
@@ -107,7 +107,7 @@ namespace GenFramework.Test.Interfaces
         [TestMethod]
         public void CruzamientoSimpleTest()
         {
-            IOperadorCruzamiento operador = new OperadorCruzamientoSimple(_parametrosCruzamientoSimple);
+            IOperadorCruzamiento operador = new OperadorCruzamientoMascara(_parametrosCruzamientoSimple);
 
             var poblacionFinal = operador.Cruzar(this._poblacion);
 

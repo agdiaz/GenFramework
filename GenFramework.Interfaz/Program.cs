@@ -16,7 +16,7 @@ namespace GenFramework.Interfaz
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new EjecutorAlgortimo());
+            //Application.Run(new EjecutorAlgortimo());
         }
     }
 }

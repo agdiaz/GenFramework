@@ -9,6 +9,6 @@ namespace GenFramework.Implementacion.Parametros
 {
     public class ParametrosCruzamiento : IParametrosCruzamiento
     {
-        public int IndiceCorte { get; set; }
+        public string Mascara { get; set; }
     }
 }

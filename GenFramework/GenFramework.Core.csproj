@@ -45,6 +45,8 @@
     <Compile Include="Implementacion\Genetica\GenBase.cs" />
     <Compile Include="Implementacion\OperadorAnalisisPoblacion\OperadorAnalisisPoblacion.cs" />
     <Compile Include="Implementacion\OperadorCorte\OperadorCorteSimple.cs" />
+    <Compile Include="Implementacion\OperadorCruzamiento\OperadorCruzamientoAzar.cs" />
+    <Compile Include="Implementacion\OperadorCruzamiento\OperadorCruzamientoMascara.cs" />
     <Compile Include="Implementacion\OperadorCruzamiento\OperadorCruzamientoSimple.cs" />
     <Compile Include="Implementacion\OperadorMutacion\OperadorMutacionConstante.cs" />
     <Compile Include="Implementacion\OperadorSeleccion\OperadorSeleccionPorTorneo.cs" />
