@@ -127,7 +127,7 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.label11 = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dgvEstadisticas = new System.Windows.Forms.DataGridView();
             this.txtPeor = new System.Windows.Forms.TextBox();
             this.txtMejor = new System.Windows.Forms.TextBox();
             this.txtGeneracion = new System.Windows.Forms.TextBox();
@@ -213,7 +213,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvEstadisticas)).BeginInit();
             this.SuspendLayout();
             // 
             // label2
@@ -260,7 +260,7 @@
             this.nudCantidadPoblacion.Size = new System.Drawing.Size(109, 20);
             this.nudCantidadPoblacion.TabIndex = 4;
             this.nudCantidadPoblacion.Value = new decimal(new int[] {
-            50000,
+            5000,
             0,
             0,
             0});
@@ -296,7 +296,8 @@
             // 
             // btnIniciar
             // 
-            this.btnIniciar.Location = new System.Drawing.Point(922, 465);
+            this.btnIniciar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnIniciar.Location = new System.Drawing.Point(1159, 465);
             this.btnIniciar.Name = "btnIniciar";
             this.btnIniciar.Size = new System.Drawing.Size(75, 23);
             this.btnIniciar.TabIndex = 8;
@@ -1214,8 +1215,11 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox2.Controls.Add(this.label11);
-            this.groupBox2.Controls.Add(this.dataGridView1);
+            this.groupBox2.Controls.Add(this.dgvEstadisticas);
             this.groupBox2.Controls.Add(this.txtPeor);
             this.groupBox2.Controls.Add(this.txtMejor);
             this.groupBox2.Controls.Add(this.txtGeneracion);
@@ -1225,7 +1229,7 @@
             this.groupBox2.Controls.Add(this.tlpTableroMejor);
             this.groupBox2.Location = new System.Drawing.Point(332, 2);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(665, 394);
+            this.groupBox2.Size = new System.Drawing.Size(908, 457);
             this.groupBox2.TabIndex = 13;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Resultados";
@@ -1239,13 +1243,23 @@
             this.label11.TabIndex = 21;
             this.label11.Text = "Estadísticas";
             // 
-            // dataGridView1
+            // dgvEstadisticas
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(310, 50);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(349, 297);
-            this.dataGridView1.TabIndex = 20;
+            this.dgvEstadisticas.AllowUserToAddRows = false;
+            this.dgvEstadisticas.AllowUserToDeleteRows = false;
+            this.dgvEstadisticas.AllowUserToOrderColumns = true;
+            this.dgvEstadisticas.AllowUserToResizeRows = false;
+            this.dgvEstadisticas.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgvEstadisticas.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.dgvEstadisticas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvEstadisticas.Location = new System.Drawing.Point(310, 50);
+            this.dgvEstadisticas.MultiSelect = false;
+            this.dgvEstadisticas.Name = "dgvEstadisticas";
+            this.dgvEstadisticas.RowHeadersVisible = false;
+            this.dgvEstadisticas.Size = new System.Drawing.Size(592, 401);
+            this.dgvEstadisticas.TabIndex = 20;
             // 
             // txtPeor
             // 
@@ -1300,12 +1314,13 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1009, 500);
+            this.ClientSize = new System.Drawing.Size(1252, 500);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnIniciar);
             this.Name = "EjecutorAlgoritmo";
             this.Text = "Problema de las ocho reinas";
+            this.Load += new System.EventHandler(this.EjecutorAlgoritmo_Load);
             ((System.ComponentModel.ISupportInitialize)(this.nudCantidadPoblacion)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudCantidadSeleccionada)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudProbabilidadMutacion)).EndInit();
@@ -1391,7 +1406,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvEstadisticas)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1490,7 +1505,7 @@
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.RadioButton rdbMascara;
         private System.Windows.Forms.RadioButton rdbCruzarAzar;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dgvEstadisticas;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.TextBox txtMascara;
         private System.Windows.Forms.RadioButton rdbFitnessReinasVivas;

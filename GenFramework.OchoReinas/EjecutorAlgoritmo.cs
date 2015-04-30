@@ -38,6 +38,7 @@ namespace GenFramework.OchoReinas
         private IOperadorAnalisisPoblacion analisis;
         private BackgroundWorker _backgroundWorker;
         private SynchronizationContext context;
+        private List<Estadistica.FilaEstadistica> _estadisticas;
 
         public EjecutorAlgoritmo()
         {
@@ -202,9 +203,33 @@ namespace GenFramework.OchoReinas
                         controlReina.BackColor = Color.Orange;
                     }
                 }
+
+                var row = dgvEstadisticas.Rows.Add();
+                dgvEstadisticas.Rows[row].Cells["NumeroGeneracion"].Value = poblacionResultante.NumeroGeneracion;
+                dgvEstadisticas.Rows[row].Cells["FitnessGlobalMaximo"].Value = analisis.MejorFitnessGlobal;
+                dgvEstadisticas.Rows[row].Cells["FitnessGlobalMinimo"].Value = analisis.PeorFitnessGlobal;
+                dgvEstadisticas.Rows[row].Cells["FitnessLocalMaximo"].Value = analisis.MejorFitnessVuelta;
+                dgvEstadisticas.Rows[row].Cells["FitnessLocalMinimo"].Value = analisis.PeorFitnessVuelta;
+                dgvEstadisticas.Rows[row].Cells["PorcentajeGlobalExito"].Value = ((analisis.MejorFitnessGlobal * 100) / (decimal)nudUmbralCorte.Value);
+                dgvEstadisticas.Rows[row].Cells["PorcentajeLocalExito"].Value = ((analisis.MejorFitnessVuelta * 100) / (decimal)nudUmbralCorte.Value);
+
             }), null);
         }
 
         #endregion
+
+        private void EjecutorAlgoritmo_Load(object sender, EventArgs e)
+        {
+            //this._estadisticas = new List<Estadistica.FilaEstadistica>();
+            //this.dataGridView1.DataSource = this._estadisticas;
+            this.dgvEstadisticas.Columns.Add("NumeroGeneracion", "Nro. Generación");
+            this.dgvEstadisticas.Columns.Add("FitnessGlobalMaximo", "Mejor global");
+            this.dgvEstadisticas.Columns.Add("FitnessGlobalMinimo", "Peor global");
+            this.dgvEstadisticas.Columns.Add("FitnessLocalMaximo", "Mejor local");
+            this.dgvEstadisticas.Columns.Add("FitnessLocalMinimo", "Peor local");
+            this.dgvEstadisticas.Columns.Add("PorcentajeGlobalExito", "Porc. éxito global");
+            this.dgvEstadisticas.Columns.Add("PorcentajeLocalExito", "Porc. éxito local");
+
+        }
     }
 }

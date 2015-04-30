@@ -50,6 +50,7 @@
     <Compile Include="EjecutorAlgoritmo.Designer.cs">
       <DependentUpon>EjecutorAlgoritmo.cs</DependentUpon>
     </Compile>
+    <Compile Include="Estadistica\FilaEstadistica.cs" />
     <Compile Include="Fitness\SumatoriaAmenazasFitness.cs" />
     <Compile Include="Fitness\CasillerosSinAmenzasFitness.cs" />
     <Compile Include="Fitness\TableroFitness.cs" />
