@@ -134,6 +134,10 @@
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
+            this.txtMejorReinas = new System.Windows.Forms.TextBox();
+            this.txtPeorReinas = new System.Windows.Forms.TextBox();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.nudCantidadPoblacion)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudCantidadSeleccionada)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudProbabilidadMutacion)).BeginInit();
@@ -622,7 +626,7 @@
             this.tlpTableroMejor.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 36F));
             this.tlpTableroMejor.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 36F));
             this.tlpTableroMejor.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 36F));
-            this.tlpTableroMejor.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 38F));
+            this.tlpTableroMejor.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 40F));
             this.tlpTableroMejor.Controls.Add(this.pictureBox64, 7, 7);
             this.tlpTableroMejor.Controls.Add(this.pictureBox63, 6, 7);
             this.tlpTableroMejor.Controls.Add(this.pictureBox62, 5, 7);
@@ -687,7 +691,7 @@
             this.tlpTableroMejor.Controls.Add(this.pictureBox3, 2, 0);
             this.tlpTableroMejor.Controls.Add(this.pictureBox2, 1, 0);
             this.tlpTableroMejor.Controls.Add(this.pictureBox1, 0, 0);
-            this.tlpTableroMejor.Location = new System.Drawing.Point(6, 50);
+            this.tlpTableroMejor.Location = new System.Drawing.Point(6, 75);
             this.tlpTableroMejor.Name = "tlpTableroMejor";
             this.tlpTableroMejor.RowCount = 8;
             this.tlpTableroMejor.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 36F));
@@ -698,7 +702,7 @@
             this.tlpTableroMejor.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 36F));
             this.tlpTableroMejor.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 36F));
             this.tlpTableroMejor.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 36F));
-            this.tlpTableroMejor.Size = new System.Drawing.Size(299, 297);
+            this.tlpTableroMejor.Size = new System.Drawing.Size(301, 297);
             this.tlpTableroMejor.TabIndex = 12;
             // 
             // pictureBox64
@@ -1218,6 +1222,10 @@
             this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox2.Controls.Add(this.label16);
+            this.groupBox2.Controls.Add(this.label15);
+            this.groupBox2.Controls.Add(this.txtPeorReinas);
+            this.groupBox2.Controls.Add(this.txtMejorReinas);
             this.groupBox2.Controls.Add(this.label11);
             this.groupBox2.Controls.Add(this.dgvEstadisticas);
             this.groupBox2.Controls.Add(this.txtPeor);
@@ -1227,7 +1235,7 @@
             this.groupBox2.Controls.Add(this.label7);
             this.groupBox2.Controls.Add(this.label6);
             this.groupBox2.Controls.Add(this.tlpTableroMejor);
-            this.groupBox2.Location = new System.Drawing.Point(332, 2);
+            this.groupBox2.Location = new System.Drawing.Point(332, 3);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(908, 457);
             this.groupBox2.TabIndex = 13;
@@ -1274,10 +1282,11 @@
             this.txtMejor.Name = "txtMejor";
             this.txtMejor.Size = new System.Drawing.Size(100, 20);
             this.txtMejor.TabIndex = 18;
+
             // 
             // txtGeneracion
             // 
-            this.txtGeneracion.Location = new System.Drawing.Point(83, 356);
+            this.txtGeneracion.Location = new System.Drawing.Point(83, 375);
             this.txtGeneracion.Name = "txtGeneracion";
             this.txtGeneracion.Size = new System.Drawing.Size(74, 20);
             this.txtGeneracion.TabIndex = 17;
@@ -1286,7 +1295,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(12, 359);
+            this.label8.Location = new System.Drawing.Point(12, 376);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(65, 13);
             this.label8.TabIndex = 16;
@@ -1295,20 +1304,52 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(158, 29);
+            this.label7.Location = new System.Drawing.Point(150, 29);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(32, 13);
+            this.label7.Size = new System.Drawing.Size(43, 13);
             this.label7.TabIndex = 15;
-            this.label7.Text = "Peor:";
+            this.label7.Text = "Peor fit:";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(6, 29);
+            this.label6.Location = new System.Drawing.Point(4, 29);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(36, 13);
+            this.label6.Size = new System.Drawing.Size(47, 13);
             this.label6.TabIndex = 14;
-            this.label6.Text = "Mejor:";
+            this.label6.Text = "Mejor fit:";
+            // 
+            // txtMejorReinas
+            // 
+            this.txtMejorReinas.Location = new System.Drawing.Point(106, 49);
+            this.txtMejorReinas.Name = "txtMejorReinas";
+            this.txtMejorReinas.Size = new System.Drawing.Size(41, 20);
+            this.txtMejorReinas.TabIndex = 22;
+            // 
+            // txtPeorReinas
+            // 
+            this.txtPeorReinas.Location = new System.Drawing.Point(256, 49);
+            this.txtPeorReinas.Name = "txtPeorReinas";
+            this.txtPeorReinas.Size = new System.Drawing.Size(39, 20);
+            this.txtPeorReinas.TabIndex = 23;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(0, 52);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(100, 13);
+            this.label15.TabIndex = 24;
+            this.label15.Text = "Mayor Cant Reinas:";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(150, 52);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(101, 13);
+            this.label16.TabIndex = 25;
+            this.label16.Text = "Menor Cant Reinas:";
             // 
             // EjecutorAlgoritmo
             // 
@@ -1519,6 +1560,10 @@
         private System.Windows.Forms.GroupBox groupBox6;
         private System.Windows.Forms.NumericUpDown nudUmbralCorte;
         private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.TextBox txtMejorReinas;
+        private System.Windows.Forms.TextBox txtPeorReinas;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label label15;
     }
 }
 
