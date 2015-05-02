@@ -108,7 +108,9 @@ namespace GenFramework.OchoReinas
             IOperadorCorte operadorCorte = null;
             var parametrosCorte = new ParametrosCorte()
             {
-                FuncionFitness = funcionFitness,
+                //OJO! Hago que corte siempre por cantidad de reinas, ya que no se puede mejorar mas...
+//              FuncionFitness = funcionFitness,
+                FuncionFitness = new TableroFitness(),
                 UmbralCorte = (int)nudUmbralCorte.Value,
                 LimiteIteraciones = (int)nudLimiteVueltas.Value
             };
