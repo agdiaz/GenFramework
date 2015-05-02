@@ -147,15 +147,15 @@ namespace GenFramework.OchoReinas
             {
                 var individuo = new IndividuoTablero();
 
-                while (individuo.AgregarReina(_generadorAleatorio.Next(0, 7), _generadorAleatorio.Next(0, 7)) == false) ;
-                while (individuo.AgregarReina(_generadorAleatorio.Next(0, 7), _generadorAleatorio.Next(0, 7)) == false) ;
-                while (individuo.AgregarReina(_generadorAleatorio.Next(0, 7), _generadorAleatorio.Next(0, 7)) == false) ;
-                while (individuo.AgregarReina(_generadorAleatorio.Next(0, 7), _generadorAleatorio.Next(0, 7)) == false) ;
+                while (individuo.AgregarReina(_generadorAleatorio.Next(0, 8), _generadorAleatorio.Next(0, 8)) == false) ;
+                while (individuo.AgregarReina(_generadorAleatorio.Next(0, 8), _generadorAleatorio.Next(0, 8)) == false) ;
+                while (individuo.AgregarReina(_generadorAleatorio.Next(0, 8), _generadorAleatorio.Next(0, 8)) == false) ;
+                while (individuo.AgregarReina(_generadorAleatorio.Next(0, 8), _generadorAleatorio.Next(0, 8)) == false) ;
 
-                while (individuo.AgregarReina(_generadorAleatorio.Next(0, 7), _generadorAleatorio.Next(0, 7)) == false) ;
-                while (individuo.AgregarReina(_generadorAleatorio.Next(0, 7), _generadorAleatorio.Next(0, 7)) == false) ;
-                while (individuo.AgregarReina(_generadorAleatorio.Next(0, 7), _generadorAleatorio.Next(0, 7)) == false) ;
-                while (individuo.AgregarReina(_generadorAleatorio.Next(0, 7), _generadorAleatorio.Next(0, 7)) == false) ;
+                while (individuo.AgregarReina(_generadorAleatorio.Next(0, 8), _generadorAleatorio.Next(0, 8)) == false) ;
+                while (individuo.AgregarReina(_generadorAleatorio.Next(0, 8), _generadorAleatorio.Next(0, 8)) == false) ;
+                while (individuo.AgregarReina(_generadorAleatorio.Next(0, 8), _generadorAleatorio.Next(0, 8)) == false) ;
+                while (individuo.AgregarReina(_generadorAleatorio.Next(0, 8), _generadorAleatorio.Next(0, 8)) == false) ;
                 
                 individuos.Add(individuo);
             }
