@@ -26,7 +26,6 @@ namespace GenFramework.OchoReinas.Fitness
 
         private decimal AnalizarReinas(ICromosoma cromosoma)
         {
-            decimal reinaVivas = 0;
 
             Tablero tablero = new Tablero();
             for (int indiceReina = 0; indiceReina < cromosoma.Genes.Length; indiceReina++)
@@ -37,10 +36,8 @@ namespace GenFramework.OchoReinas.Fitness
                 tablero.AgregarReina(reina);
             }
 
-
-            reinaVivas = tablero.CalcularReinasVivas().Count;
-
-            return reinaVivas;
+            //Negativo porque conviene que tenga MENOS amenazados.
+            return -tablero.CantCasillerosAmenazados() ;
         }
     }
 }

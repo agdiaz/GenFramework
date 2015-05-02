@@ -75,6 +75,38 @@ namespace GenFramework.OchoReinas.LogicaNegocio
             return reinasVivas;
         }
 
+        public int CantPosicionesVacias()
+        {
+            var casillerosVacios = 0;
+
+            for (int i = 0; i < 8; i++)
+            {
+                for (int j = 0; j < 8; j++)
+                {
+                    if (!this.posiciones[i][j].Reina.Any()) 
+                        casillerosVacios++;
+                    
+                }
+            }
+
+            return casillerosVacios;
+        }
+
+        public int CantCasillerosAmenazados()
+        {
+            var casillerosAmenazados = 0;
+
+            for (int i = 0; i < 8; i++)
+            {
+                for (int j = 0; j < 8; j++)
+                {
+                    if (this.posiciones[i][j].Reina.Any())
+                        casillerosAmenazados++;
+                }
+            }
+            return casillerosAmenazados;
+        }
+
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
