@@ -10,5 +10,6 @@ namespace GenFramework.Interfaces.Parametros
     public interface IParametrosAnalisisPoblacion
     {
         IFuncionFitness Funcion { get; }
+        IFuncionFitness FuncionReinas { get; }
     }
 }

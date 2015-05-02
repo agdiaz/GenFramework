@@ -115,7 +115,7 @@ namespace GenFramework.OchoReinas
             operadorCorte = new OperadorCorteSimple(parametrosCorte);
 
 
-            this.analisis = new OperadorAnalisisPoblacion(new ParametrosAnalisisPoblacion() { Funcion = funcionFitness });
+            this.analisis = new OperadorAnalisisPoblacion(new ParametrosAnalisisPoblacion() { Funcion = funcionFitness, FuncionReinas = new TableroFitness()});
             
             IAlgoritmoGenetico algoritmo = new AlgoritmoGenetico(poblacionInicial, 
                 operadorSeleccion,
@@ -175,6 +175,10 @@ namespace GenFramework.OchoReinas
             {
                 this.txtMejor.Text = analisis.MejorFitnessGlobal.ToString();
                 this.txtPeor.Text = analisis.PeorFitnessGlobal.ToString();
+
+                this.txtMejorReinas.Text = analisis.MejorReinasGlobal.ToString();
+                this.txtPeorReinas.Text = analisis.PeorReinasGlobal.ToString();
+
                 this.txtGeneracion.Text = poblacionResultante.NumeroGeneracion.ToString();
 
                 var reinasMejor = analisis.MejorIndividuoGlobal.Cromosoma.Genes;

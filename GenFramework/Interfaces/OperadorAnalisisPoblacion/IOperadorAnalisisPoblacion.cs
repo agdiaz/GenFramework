@@ -16,6 +16,8 @@ namespace GenFramework.Interfaces.OperadorAnalisisPoblacion
 
         decimal MejorFitnessGlobal { get; }
         decimal PeorFitnessGlobal { get; }
+        decimal MejorReinasGlobal { get; }
+        decimal PeorReinasGlobal { get; }
         decimal MejorFitnessVuelta { get; }
         decimal PeorFitnessVuelta { get; }
 

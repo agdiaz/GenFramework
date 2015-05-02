@@ -11,5 +11,6 @@ namespace GenFramework.Implementacion.Parametros
     public class ParametrosAnalisisPoblacion : IParametrosAnalisisPoblacion
     {
         public IFuncionFitness Funcion { get; set; }
+        public IFuncionFitness FuncionReinas { get; set; }
     }
 }

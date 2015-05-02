@@ -20,6 +20,8 @@ namespace GenFramework.Implementacion.OperadorAnalisisPoblacion
         public IIndividuo MejorIndividuoVuelta {get; private set;}
         public IIndividuo PeorIndividuoVuelta { get; private set; }
 
+        public decimal MejorReinasGlobal { get; private set; }
+        public decimal PeorReinasGlobal { get; private set; }
         public decimal MejorFitnessGlobal { get; private set; }
         public decimal PeorFitnessGlobal { get; private set; }
         public decimal MejorFitnessVuelta { get; private set; }
@@ -47,11 +49,13 @@ namespace GenFramework.Implementacion.OperadorAnalisisPoblacion
                 {
                     this.MejorIndividuoGlobal = individuo;
                     this.MejorFitnessGlobal = fitness;
+                    this.MejorReinasGlobal = this._parametrosAnalisisPoblacion.FuncionReinas.Evaluar(individuo); ;
                 }
                 if (MejorIndividuoVuelta == null || fitness > MejorFitnessVuelta)
                 {
                     this.MejorIndividuoVuelta = individuo;
                     this.MejorFitnessVuelta = fitness;
+                    this.MejorReinasGlobal = this._parametrosAnalisisPoblacion.FuncionReinas.Evaluar(individuo); ;
                 }
 
                 // Menores
@@ -59,11 +63,13 @@ namespace GenFramework.Implementacion.OperadorAnalisisPoblacion
                 {
                     this.PeorIndividuoGlobal = individuo;
                     this.PeorFitnessGlobal = fitness;
+                    this.PeorReinasGlobal = this._parametrosAnalisisPoblacion.FuncionReinas.Evaluar(individuo); ;
                 }
                 if (PeorIndividuoVuelta == null || fitness < PeorFitnessVuelta)
                 {
                     this.PeorIndividuoVuelta = individuo;
                     this.PeorFitnessVuelta = fitness;
+                    this.PeorReinasGlobal = this._parametrosAnalisisPoblacion.FuncionReinas.Evaluar(individuo); ;
                 }
 
             }
