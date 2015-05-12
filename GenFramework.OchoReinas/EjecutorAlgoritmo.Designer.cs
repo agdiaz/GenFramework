@@ -626,7 +626,7 @@
             this.tlpTableroMejor.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 36F));
             this.tlpTableroMejor.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 36F));
             this.tlpTableroMejor.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 36F));
-            this.tlpTableroMejor.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 41F));
+            this.tlpTableroMejor.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 42F));
             this.tlpTableroMejor.Controls.Add(this.pictureBox64, 7, 7);
             this.tlpTableroMejor.Controls.Add(this.pictureBox63, 6, 7);
             this.tlpTableroMejor.Controls.Add(this.pictureBox62, 5, 7);
@@ -702,7 +702,7 @@
             this.tlpTableroMejor.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 36F));
             this.tlpTableroMejor.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 36F));
             this.tlpTableroMejor.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 36F));
-            this.tlpTableroMejor.Size = new System.Drawing.Size(302, 297);
+            this.tlpTableroMejor.Size = new System.Drawing.Size(303, 297);
             this.tlpTableroMejor.TabIndex = 12;
             // 
             // pictureBox64
@@ -1295,7 +1295,6 @@
             this.dgvEstadisticas.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dgvEstadisticas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvEstadisticas.Location = new System.Drawing.Point(310, 50);
-            this.dgvEstadisticas.MultiSelect = false;
             this.dgvEstadisticas.Name = "dgvEstadisticas";
             this.dgvEstadisticas.RowHeadersVisible = false;
             this.dgvEstadisticas.Size = new System.Drawing.Size(592, 401);
