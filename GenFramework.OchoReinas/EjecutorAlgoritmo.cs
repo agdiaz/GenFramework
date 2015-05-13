@@ -34,6 +34,8 @@ namespace GenFramework.OchoReinas
 {
     public partial class EjecutorAlgoritmo : Form
     {
+        public event IteracionCanceladaEventHandler IteracionCancelada;
+
         private Random _generadorAleatorio;
         private IOperadorAnalisisPoblacion analisis;
         private BackgroundWorker _backgroundWorker;
@@ -44,6 +46,7 @@ namespace GenFramework.OchoReinas
         {
             this._generadorAleatorio = new Random();
             this._backgroundWorker = new BackgroundWorker();
+            this._backgroundWorker.WorkerSupportsCancellation = true;
             this._backgroundWorker.DoWork += _backgroundWorker_DoWork;
             this._backgroundWorker.RunWorkerCompleted += _backgroundWorker_RunWorkerCompleted;
             this.context = SynchronizationContext.Current;
@@ -58,6 +61,8 @@ namespace GenFramework.OchoReinas
         private void btnIniciar_Click(object sender, EventArgs e)
         {
             _backgroundWorker.RunWorkerAsync();
+            this.dgvEstadisticas.DataSource = null;
+            this.dgvEstadisticas.Rows.Clear();
             this.btnIniciar.Enabled = false;
         }
 
@@ -123,7 +128,8 @@ namespace GenFramework.OchoReinas
                 operadorSeleccion,
                 operadorCruzamiento,
                 operadorMutacion,
-                operadorCorte);
+                operadorCorte,
+                this.IteracionCancelada);
 
             IParametros parametros = new Parametros()
             {
@@ -236,6 +242,25 @@ namespace GenFramework.OchoReinas
             this.dgvEstadisticas.Columns.Add("PorcentajeGlobalExito", "Porc. éxito global");
             this.dgvEstadisticas.Columns.Add("PorcentajeLocalExito", "Porc. éxito local");
 
+        }
+
+        private void btnParar_Click(object sender, EventArgs e)
+        {
+            if (_backgroundWorker.IsBusy)
+            {
+                if (IteracionCancelada != null)
+                    IteracionCancelada();
+
+                _backgroundWorker.CancelAsync();
+                MessageBox.Show(this, "Cancelado");
+            }
+
+            while (_backgroundWorker.IsBusy)
+            { 
+                Application.DoEvents();
+            }
+
+            
         }
     }
 }

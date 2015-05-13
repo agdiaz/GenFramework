@@ -9,6 +9,7 @@ using System.Text;
 namespace GenFramework.Interfaces
 {
     public delegate void IteracionTerminadaEventHandler(IAlgoritmoGenetico sender, PoblacionEventArgs e);
+    public delegate void IteracionCanceladaEventHandler();
 
     public interface IAlgoritmoGenetico
     {

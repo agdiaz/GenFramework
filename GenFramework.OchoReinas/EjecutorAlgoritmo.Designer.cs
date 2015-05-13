@@ -138,6 +138,7 @@
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
+            this.btnParar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.nudCantidadPoblacion)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudCantidadSeleccionada)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudProbabilidadMutacion)).BeginInit();
@@ -1349,11 +1350,22 @@
             this.label6.TabIndex = 14;
             this.label6.Text = "Mejor fit:";
             // 
+            // btnParar
+            // 
+            this.btnParar.Location = new System.Drawing.Point(1078, 465);
+            this.btnParar.Name = "btnParar";
+            this.btnParar.Size = new System.Drawing.Size(75, 23);
+            this.btnParar.TabIndex = 14;
+            this.btnParar.Text = "Parar";
+            this.btnParar.UseVisualStyleBackColor = true;
+            this.btnParar.Click += new System.EventHandler(this.btnParar_Click);
+            // 
             // EjecutorAlgoritmo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1252, 500);
+            this.Controls.Add(this.btnParar);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnIniciar);
@@ -1562,6 +1574,7 @@
         private System.Windows.Forms.TextBox txtPeorReinas;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Button btnParar;
     }
 }
 

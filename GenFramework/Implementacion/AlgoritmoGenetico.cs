@@ -15,6 +15,8 @@ namespace GenFramework.Implementacion
     {
         #region Eventos
         public event IteracionTerminadaEventHandler IteracionTerminada;
+        public event IteracionCanceladaEventHandler IteracionCancelada;
+
         #endregion
 
         #region Atributos
@@ -23,6 +25,7 @@ namespace GenFramework.Implementacion
         private IOperadorMutacion _operadorMutacion;
         private IOperadorCorte _operadorCorte;
         private IPoblacion _poblacion;
+        private bool _terminar;
         #endregion
 
         #region Constructor
@@ -30,14 +33,22 @@ namespace GenFramework.Implementacion
             IOperadorSeleccion _operadorSeleccion, 
             IOperadorCruzamiento _operadorCruzamiento, 
             IOperadorMutacion _operadorMutacion, 
-            IOperadorCorte _operadorCorte)
+            IOperadorCorte _operadorCorte,
+            IteracionCanceladaEventHandler IteracionCancelada)
         {
             this._poblacion = poblacionInicial;
             this._operadorSeleccion = _operadorSeleccion;
             this._operadorCruzamiento = _operadorCruzamiento;
             this._operadorMutacion = _operadorMutacion;
             this._operadorCorte = _operadorCorte;
+            IteracionCancelada += AlgoritmoGenetico_IteracionCancelada;
         }
+
+        void AlgoritmoGenetico_IteracionCancelada()
+        {
+            this._terminar = true;
+        }
+
         #endregion
 
         #region IAlgoritmoGenetico
@@ -59,10 +70,13 @@ namespace GenFramework.Implementacion
                 // Esperar para la siguiente vuelta
                 Thread.Sleep(parametros.IntervaloPorVuelta);
 
-            } while (!this._operadorCorte.CortarEjecucion(this._poblacion));
+            } while (!_terminar && !this._operadorCorte.CortarEjecucion(this._poblacion));
             
             return this._poblacion;
         }
         #endregion
+
+
+        
     }
 }
